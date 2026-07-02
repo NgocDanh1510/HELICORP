@@ -71,6 +71,27 @@
       }
     }
   },
+  "story": {
+    "eyebrow": "Scrollytelling",
+    "title": "Camera, chip va pin cung chuyen dong theo cach ban dung may.",
+    "description": "Section nay dung GSAP ScrollTrigger de tao chuyen dong nhe khi nguoi dung cuon, dong thoi giam hieu ung tren mobile.",
+    "phoneLabel": "Aurora Motion Core",
+    "phoneDescription": "Mot trai nghiem chuyen dong nhe cho landing page ma van giu tinh gon gang.",
+    "items": {
+      "camera": {
+        "title": "Camera theo khoanh khac",
+        "description": "He thong camera noi bat dan khi nguoi dung cuon den noi dung hinh anh."
+      },
+      "chip": {
+        "title": "Chip xu ly on-device",
+        "description": "Chuyen dong chip tao cam giac toc do nhung khong can canvas nang."
+      },
+      "battery": {
+        "title": "Pin duoc toi uu",
+        "description": "Hieu ung tren mobile duoc rut gon de uu tien do muot va PageSpeed."
+      }
+    }
+  },
   "newsletter": {
     "eyebrow": "Cap nhat san pham",
     "title": "Nhan tin moi tu HeliPhone Aurora",

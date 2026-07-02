@@ -71,6 +71,27 @@
       }
     }
   },
+  "story": {
+    "eyebrow": "Scrollytelling",
+    "title": "Camera, chip and battery move with the way people use the phone.",
+    "description": "This section uses GSAP ScrollTrigger for subtle scroll motion while reducing the effect on mobile.",
+    "phoneLabel": "Aurora Motion Core",
+    "phoneDescription": "A lightweight motion moment for the landing page without a heavy canvas.",
+    "items": {
+      "camera": {
+        "title": "Camera for every moment",
+        "description": "The camera story reveals as people scroll into the imaging content."
+      },
+      "chip": {
+        "title": "On-device processing",
+        "description": "The chip motion adds a sense of speed without relying on heavy rendering."
+      },
+      "battery": {
+        "title": "Optimized battery story",
+        "description": "Mobile animation is reduced to prioritize smoothness and PageSpeed."
+      }
+    }
+  },
   "newsletter": {
     "eyebrow": "Product updates",
     "title": "Get HeliPhone Aurora updates",
