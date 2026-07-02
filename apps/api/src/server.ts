@@ -4,6 +4,7 @@ import express, { type ErrorRequestHandler } from "express";
 import { ZodError } from "zod";
 import { connectDatabase } from "./config/db";
 import cartRouter from "./routes/cart";
+import newsletterRouter from "./routes/newsletter";
 import ordersRouter from "./routes/orders";
 import productsRouter from "./routes/products";
 
@@ -21,6 +22,7 @@ app.get("/api/health", (_req, res) => {
 app.use("/api/products", productsRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/orders", ordersRouter);
+app.use("/api/newsletter", newsletterRouter);
 
 const errorHandler: ErrorRequestHandler = (error, _req, res, _next) => {
   if (error instanceof ZodError) {

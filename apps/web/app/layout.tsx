@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { CartDrawer } from "../components/cart/CartDrawer";
+import { Header } from "../components/layout/Header";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -11,6 +12,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="vi">
       <body className="font-sans antialiased">
+        <Header />
         {children}
         <CartDrawer />
       </body>
