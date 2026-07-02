@@ -2,6 +2,7 @@
 
 import { ChevronDown, Globe2, Heart, Menu, Moon, ShoppingBag, Sun, X } from "lucide-react";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { useCartStore } from "../../lib/store/cartStore";
 
@@ -26,8 +27,9 @@ const productLinks = [
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [isMounted, setIsMounted] = useState(false);
   const [language, setLanguage] = useState<"VI" | "EN">("VI");
+  const { resolvedTheme, setTheme } = useTheme();
   const initializeCart = useCartStore((state) => state.initializeCart);
   const itemCount = useCartStore((state) => state.itemCount);
   const openCart = useCartStore((state) => state.openCart);
@@ -37,16 +39,11 @@ export function Header() {
   }, [initializeCart]);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("helicorp_theme") === "dark" ? "dark" : "light";
-    setTheme(savedTheme);
-    document.documentElement.classList.toggle("dark", savedTheme === "dark");
+    setIsMounted(true);
   }, []);
 
   const toggleTheme = () => {
-    const nextTheme = theme === "dark" ? "light" : "dark";
-    setTheme(nextTheme);
-    localStorage.setItem("helicorp_theme", nextTheme);
-    document.documentElement.classList.toggle("dark", nextTheme === "dark");
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
 
   const navigation = (
@@ -137,7 +134,7 @@ export function Header() {
             className="grid size-10 place-items-center rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-900"
             aria-label="Doi giao dien sang toi/sang"
           >
-            {theme === "dark" ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
+            {isMounted && resolvedTheme === "dark" ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
           </button>
           <button
             type="button"
@@ -189,7 +186,7 @@ export function Header() {
               className="grid h-10 place-items-center rounded-lg border border-slate-200 text-slate-600 dark:border-slate-800 dark:text-slate-300"
               aria-label="Doi giao dien sang toi/sang"
             >
-              {theme === "dark" ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
+              {isMounted && resolvedTheme === "dark" ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
             </button>
             <button
               type="button"
