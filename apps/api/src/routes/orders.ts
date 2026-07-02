@@ -16,6 +16,7 @@ type CartOrderItem = {
   productId: unknown;
   name: string;
   price: number;
+  image?: string;
   color: string;
   storage: string;
   quantity: number;
@@ -35,6 +36,7 @@ router.post("/", async (req, res, next) => {
       productId: item.productId,
       name: item.name,
       price: item.price,
+      image: item.image,
       color: item.color,
       storage: item.storage,
       quantity: item.quantity

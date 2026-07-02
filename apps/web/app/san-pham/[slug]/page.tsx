@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { ProductPurchasePanel } from "../../../components/cart/ProductPurchasePanel";
 import { getProductBySlug, getProducts } from "../../../lib/services/productService";
 
 type ProductPageProps = {
@@ -66,31 +67,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
           <p className="mt-4 text-2xl font-bold text-aurora">{formatCurrency(product.price)}</p>
           <p className="mt-5 leading-8 text-slate-600">{product.description}</p>
 
-          <div className="mt-8">
-            <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">Mau sac</h2>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {product.colors.map((color) => (
-                <span key={color} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700">
-                  {color}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-6">
-            <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">Dung luong</h2>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {product.storageOptions.map((storage) => (
-                <span key={storage} className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-ink">
-                  {storage}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <button className="mt-8 w-full rounded-lg bg-aurora px-5 py-3 text-sm font-semibold text-white shadow-soft sm:w-auto">
-            Them vao gio hang
-          </button>
+          <ProductPurchasePanel product={product} />
         </div>
       </section>
 
