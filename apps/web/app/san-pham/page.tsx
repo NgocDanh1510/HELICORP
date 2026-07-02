@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getProducts } from "../../lib/services/productService";
 
 const formatCurrency = (value: number) =>
   new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(value);
+const fallbackImage = "https://placehold.co/1200x900/111827/ffffff.png?text=HeliPhone";
 
 export default async function ProductsPage() {
   const products = await getProducts();
@@ -26,7 +28,14 @@ export default async function ProductsPage() {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {products.map((product) => (
               <article key={product._id} className="overflow-hidden rounded-lg bg-white shadow-soft">
-                <img src={product.images[0]} alt={product.name} className="aspect-[4/3] w-full object-cover" />
+                <Image
+                  src={product.images[0] || fallbackImage}
+                  alt={product.name}
+                  width={1200}
+                  height={900}
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  className="aspect-[4/3] w-full object-cover"
+                />
                 <div className="p-5">
                   <h2 className="text-xl font-semibold text-ink">{product.name}</h2>
                   <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-600">{product.description}</p>

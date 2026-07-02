@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft, CreditCard, PackageCheck } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
@@ -20,6 +21,7 @@ type CheckoutFormValues = z.infer<typeof checkoutSchema>;
 
 const formatCurrency = (value: number) =>
   new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(value);
+const fallbackImage = "https://placehold.co/160x160/111827/ffffff.png?text=HeliPhone";
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -151,9 +153,12 @@ export default function CheckoutPage() {
               <div className="mt-5 space-y-4">
                 {items.map((item) => (
                   <article key={item._id} className="flex gap-3">
-                    <img
-                      src={item.image || "https://placehold.co/160x160/111827/ffffff.png?text=HeliPhone"}
+                    <Image
+                      src={item.image || fallbackImage}
                       alt={item.name}
+                      width={64}
+                      height={64}
+                      sizes="64px"
                       className="size-16 rounded-md object-cover"
                     />
                     <div className="min-w-0 flex-1">

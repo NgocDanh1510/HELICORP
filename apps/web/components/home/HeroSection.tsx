@@ -1,4 +1,5 @@
 import { ArrowRight, Cpu, Sparkles } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export function HeroSection() {
@@ -48,9 +49,13 @@ export function HeroSection() {
 
         <div className="relative min-h-[420px]">
           <div className="absolute inset-x-10 bottom-0 top-12 rounded-[32px] bg-gradient-to-br from-slate-950 via-[#27145f] to-aurora shadow-soft" />
-          <img
+          <Image
             src="https://placehold.co/900x1100/111827/ffffff.png?text=HeliPhone+Aurora"
             alt="HeliPhone Aurora"
+            width={900}
+            height={1100}
+            priority
+            sizes="(min-width: 1024px) 340px, 70vw"
             className="absolute left-1/2 top-0 h-[420px] w-[70%] max-w-[340px] -translate-x-1/2 rounded-[34px] border-8 border-slate-950 object-cover shadow-2xl"
           />
           <div className="absolute bottom-8 left-0 flex max-w-[260px] items-center gap-3 rounded-lg border border-white/20 bg-white/90 p-4 shadow-soft dark:bg-slate-950/90">

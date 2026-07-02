@@ -1,6 +1,12 @@
-import { FeatureHighlights } from "../components/home/FeatureHighlights";
+import dynamic from "next/dynamic";
 import { HeroSection } from "../components/home/HeroSection";
-import { NewsletterForm } from "../components/home/NewsletterForm";
+
+const FeatureHighlights = dynamic(() =>
+  import("../components/home/FeatureHighlights").then((module) => module.FeatureHighlights)
+);
+const NewsletterForm = dynamic(() => import("../components/home/NewsletterForm").then((module) => module.NewsletterForm), {
+  loading: () => <div className="px-6 py-14" />
+});
 
 export default function HomePage() {
   return (

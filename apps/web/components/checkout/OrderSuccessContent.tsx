@@ -1,6 +1,7 @@
 "use client";
 
 import { CheckCircle2, Home, ShoppingBag } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -8,6 +9,7 @@ import type { OrderSummary } from "../../lib/services/orderService";
 
 const formatCurrency = (value: number) =>
   new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(value);
+const fallbackImage = "https://placehold.co/160x160/111827/ffffff.png?text=HeliPhone";
 
 export function OrderSuccessContent() {
   const searchParams = useSearchParams();
@@ -57,9 +59,12 @@ export function OrderSuccessContent() {
           <div className="mt-5 space-y-4">
             {summary.items.map((item) => (
               <article key={item._id} className="flex gap-4 rounded-lg border border-slate-200 p-3">
-                <img
-                  src={item.image || "https://placehold.co/160x160/111827/ffffff.png?text=HeliPhone"}
+                <Image
+                  src={item.image || fallbackImage}
                   alt={item.name}
+                  width={80}
+                  height={80}
+                  sizes="80px"
                   className="size-20 rounded-md object-cover"
                 />
                 <div className="min-w-0 flex-1">
