@@ -26,14 +26,18 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
   if (!product) {
     return {
-      title: "San pham khong ton tai | HeliPhone Aurora"
+      title: {
+        absolute: "San pham khong ton tai | HeliPhone Aurora"
+      }
     };
   }
 
   const url = `${siteUrl}/san-pham/${product.slug}.html`;
 
   return {
-    title: `${product.name} | HeliPhone Aurora`,
+    title: {
+      absolute: `${product.name} | HeliPhone Aurora`
+    },
     description: product.description,
     alternates: {
       canonical: url
