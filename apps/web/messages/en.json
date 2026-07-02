@@ -1,0 +1,119 @@
+{
+  "header": {
+    "home": "Home",
+    "products": "Products",
+    "features": "Features",
+    "signup": "Sign up",
+    "allProducts": "View all products",
+    "wishlist": "Wishlist",
+    "openCart": "Open cart",
+    "menu": "Open menu",
+    "themeToggle": "Switch light/dark theme",
+    "productsList": {
+      "aurora": {
+        "label": "Aurora",
+        "description": "A lightweight flagship for every day"
+      },
+      "pro": {
+        "label": "Aurora Pro",
+        "description": "Pro camera and creative performance"
+      },
+      "proMax": {
+        "label": "Aurora Pro Max",
+        "description": "Large display and all-day battery"
+      }
+    }
+  },
+  "hero": {
+    "eyebrow": "HeliPhone Aurora Series",
+    "title": "HeliPhone Aurora",
+    "description": "A flagship smartphone family with a vivid OLED display, AI camera and premium design for work, creativity and entertainment.",
+    "primaryCta": "Explore products",
+    "secondaryCta": "View features",
+    "imageAlt": "HeliPhone Aurora",
+    "chipTitle": "Heli A1 Neural",
+    "chipDescription": "Fast and private on-device AI processing.",
+    "stats": {
+      "display": {
+        "value": "120Hz",
+        "label": "OLED LTPO"
+      },
+      "camera": {
+        "value": "50MP",
+        "label": "AI Camera"
+      },
+      "charging": {
+        "value": "65W",
+        "label": "Fast charge"
+      }
+    }
+  },
+  "features": {
+    "eyebrow": "Highlights",
+    "title": "Every detail is tuned for a flagship experience.",
+    "description": "HeliPhone Aurora focuses on what people touch every day: display, camera, performance and battery life.",
+    "items": {
+      "camera": {
+        "title": "AI Pro Camera",
+        "description": "Automatically balances portraits, night scenes and action video with natural color."
+      },
+      "chip": {
+        "title": "Heli A1 Neural",
+        "description": "A flagship chip optimized for AI tasks, gaming and multitasking while saving power."
+      },
+      "battery": {
+        "title": "All-day battery",
+        "description": "A large battery and 65W fast charging help you get back to work after a short break."
+      },
+      "material": {
+        "title": "Premium materials",
+        "description": "Titanium or aluminum frame, durable glass and improved scratch resistance."
+      }
+    }
+  },
+  "story": {
+    "eyebrow": "Scrollytelling",
+    "title": "Camera, chip and battery move with the way people use the phone.",
+    "description": "This section uses GSAP ScrollTrigger for subtle scroll motion while reducing the effect on mobile.",
+    "phoneLabel": "Aurora Motion Core",
+    "phoneDescription": "A lightweight motion moment for the landing page without a heavy canvas.",
+    "items": {
+      "camera": {
+        "title": "Camera for every moment",
+        "description": "The camera story reveals as people scroll into the imaging content."
+      },
+      "chip": {
+        "title": "On-device processing",
+        "description": "The chip motion adds a sense of speed without relying on heavy rendering."
+      },
+      "battery": {
+        "title": "Optimized battery story",
+        "description": "Mobile animation is reduced to prioritize smoothness and PageSpeed."
+      }
+    }
+  },
+  "newsletter": {
+    "eyebrow": "Product updates",
+    "title": "Get HeliPhone Aurora updates",
+    "description": "Sign up for launch news, offers and updates about the HeliPhone Aurora lineup.",
+    "emailLabel": "Email",
+    "placeholder": "you@example.com",
+    "submit": "Sign up",
+    "submitting": "Sending...",
+    "invalid": "Enter a valid email.",
+    "success": "You are subscribed. HeliCorp will send updates soon.",
+    "error": "We could not subscribe you right now. Please try again."
+  },
+  "chatbot": {
+    "open": "Open product advisor",
+    "close": "Close product advisor",
+    "title": "HeliPhone advisor",
+    "subtitle": "Ask about models, colors, storage and checkout.",
+    "minimize": "Minimize",
+    "greeting": "Hi, I can help you choose the right HeliPhone Aurora.",
+    "placeholder": "Type a question...",
+    "send": "Send message",
+    "typing": "Replying...",
+    "error": "I cannot reach the advisor service yet. Please try again later."
+  }
+}

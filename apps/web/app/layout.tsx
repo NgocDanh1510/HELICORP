@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { CartMount } from "../components/cart/CartMount";
+import { ChatbotMount } from "../components/chatbot/ChatbotMount";
 import { Header } from "../components/layout/Header";
+import { AppProviders } from "../components/providers/AppProviders";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
@@ -56,15 +58,18 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="vi">
+    <html lang="vi" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://placehold.co" />
         <link rel="dns-prefetch" href="https://placehold.co" />
       </head>
       <body className="font-sans antialiased">
-        <Header />
-        {children}
-        <CartMount />
+        <AppProviders>
+          <Header />
+          {children}
+          <CartMount />
+          <ChatbotMount />
+        </AppProviders>
       </body>
     </html>
   );
