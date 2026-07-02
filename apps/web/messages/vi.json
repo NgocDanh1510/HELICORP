@@ -103,5 +103,17 @@
     "invalid": "Email chua hop le.",
     "success": "Dang ky thanh cong. HeliCorp se gui tin moi som nhat.",
     "error": "Chua the dang ky luc nay. Vui long thu lai."
+  },
+  "chatbot": {
+    "open": "Mo chatbot tu van",
+    "close": "Dong chatbot tu van",
+    "title": "Tu van HeliPhone",
+    "subtitle": "Hoi ve mau may, mau sac, dung luong va checkout.",
+    "minimize": "Thu gon",
+    "greeting": "Xin chao, minh co the giup ban chon HeliPhone Aurora phu hop.",
+    "placeholder": "Nhap cau hoi...",
+    "send": "Gui tin nhan",
+    "typing": "Dang tra loi...",
+    "error": "Minh chua ket noi duoc he thong tu van. Vui long thu lai sau."
   }
 }

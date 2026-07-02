@@ -103,5 +103,17 @@
     "invalid": "Enter a valid email.",
     "success": "You are subscribed. HeliCorp will send updates soon.",
     "error": "We could not subscribe you right now. Please try again."
+  },
+  "chatbot": {
+    "open": "Open product advisor",
+    "close": "Close product advisor",
+    "title": "HeliPhone advisor",
+    "subtitle": "Ask about models, colors, storage and checkout.",
+    "minimize": "Minimize",
+    "greeting": "Hi, I can help you choose the right HeliPhone Aurora.",
+    "placeholder": "Type a question...",
+    "send": "Send message",
+    "typing": "Replying...",
+    "error": "I cannot reach the advisor service yet. Please try again later."
   }
 }

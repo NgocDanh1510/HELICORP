@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { CartMount } from "../components/cart/CartMount";
+import { ChatbotMount } from "../components/chatbot/ChatbotMount";
 import { Header } from "../components/layout/Header";
 import { AppProviders } from "../components/providers/AppProviders";
 import "./globals.css";
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <Header />
           {children}
           <CartMount />
+          <ChatbotMount />
         </AppProviders>
       </body>
     </html>
