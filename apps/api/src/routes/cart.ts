@@ -8,6 +8,7 @@ const addItemSchema = z.object({
   productId: z.string().min(1),
   name: z.string().min(1),
   price: z.number().nonnegative(),
+  image: z.string().url().optional(),
   color: z.string().min(1),
   storage: z.string().min(1),
   quantity: z.number().int().min(1).default(1)
