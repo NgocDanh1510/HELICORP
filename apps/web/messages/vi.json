@@ -1,0 +1,86 @@
+{
+  "header": {
+    "home": "Trang chu",
+    "products": "San pham",
+    "features": "Tinh nang",
+    "signup": "Dang ky",
+    "allProducts": "Xem tat ca san pham",
+    "wishlist": "Wishlist",
+    "openCart": "Mo gio hang",
+    "menu": "Mo menu",
+    "themeToggle": "Doi giao dien sang toi/sang",
+    "productsList": {
+      "aurora": {
+        "label": "Aurora",
+        "description": "Flagship gon nhe cho moi ngay"
+      },
+      "pro": {
+        "label": "Aurora Pro",
+        "description": "Camera Pro va hieu nang sang tao"
+      },
+      "proMax": {
+        "label": "Aurora Pro Max",
+        "description": "Man hinh lon, pin ben bi"
+      }
+    }
+  },
+  "hero": {
+    "eyebrow": "HeliPhone Aurora Series",
+    "title": "HeliPhone Aurora",
+    "description": "Dong smartphone flagship voi man hinh OLED ruc ro, camera AI va thiet ke cao cap cho cong viec, sang tao va giai tri moi ngay.",
+    "primaryCta": "Kham pha san pham",
+    "secondaryCta": "Xem tinh nang",
+    "imageAlt": "HeliPhone Aurora",
+    "chipTitle": "Heli A1 Neural",
+    "chipDescription": "Xu ly AI on-device nhanh va rieng tu.",
+    "stats": {
+      "display": {
+        "value": "120Hz",
+        "label": "OLED LTPO"
+      },
+      "camera": {
+        "value": "50MP",
+        "label": "Camera AI"
+      },
+      "charging": {
+        "value": "65W",
+        "label": "Sac nhanh"
+      }
+    }
+  },
+  "features": {
+    "eyebrow": "Tinh nang noi bat",
+    "title": "Moi chi tiet duoc toi uu cho trai nghiem flagship.",
+    "description": "HeliPhone Aurora tap trung vao nhung thu nguoi dung cham den moi ngay: man hinh, camera, hieu nang va pin.",
+    "items": {
+      "camera": {
+        "title": "Camera AI Pro",
+        "description": "Tu dong can bang anh chan dung, dem va video chuyen dong nhanh voi tone mau tu nhien."
+      },
+      "chip": {
+        "title": "Heli A1 Neural",
+        "description": "Chip flagship toi uu tac vu AI, game va da nhiem nhung van tiet kiem nang luong."
+      },
+      "battery": {
+        "title": "Pin ca ngay",
+        "description": "Vien pin lon ket hop sac nhanh 65W giup quay lai cong viec chi sau mot khoang nghi ngan."
+      },
+      "material": {
+        "title": "Vat lieu cao cap",
+        "description": "Khung titanium hoac aluminum, mat kinh ben bi va kha nang chong vet xuoc tot hon."
+      }
+    }
+  },
+  "newsletter": {
+    "eyebrow": "Cap nhat san pham",
+    "title": "Nhan tin moi tu HeliPhone Aurora",
+    "description": "Dang ky de nhan thong tin mo ban, uu dai va cac ban cap nhat ve dong HeliPhone Aurora.",
+    "emailLabel": "Email",
+    "placeholder": "you@example.com",
+    "submit": "Dang ky",
+    "submitting": "Dang gui...",
+    "invalid": "Email chua hop le.",
+    "success": "Dang ky thanh cong. HeliCorp se gui tin moi som nhat.",
+    "error": "Chua the dang ky luc nay. Vui long thu lai."
+  }
+}

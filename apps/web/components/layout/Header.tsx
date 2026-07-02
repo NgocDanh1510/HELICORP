@@ -2,24 +2,23 @@
 
 import { ChevronDown, Globe2, Heart, Menu, Moon, ShoppingBag, Sun, X } from "lucide-react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { useCartStore } from "../../lib/store/cartStore";
+import { useLanguage } from "../providers/AppProviders";
 
 const productLinks = [
   {
-    label: "Aurora",
-    description: "Flagship gon nhe cho moi ngay",
+    key: "aurora",
     href: "/san-pham/heliphone-aurora.html"
   },
   {
-    label: "Aurora Pro",
-    description: "Camera Pro va hieu nang sang tao",
+    key: "pro",
     href: "/san-pham/heliphone-aurora-pro.html"
   },
   {
-    label: "Aurora Pro Max",
-    description: "Man hinh lon, pin ben bi",
+    key: "proMax",
     href: "/san-pham/heliphone-aurora-pro-max.html"
   }
 ];
@@ -28,7 +27,8 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const [language, setLanguage] = useState<"VI" | "EN">("VI");
+  const t = useTranslations("header");
+  const { label, toggleLocale } = useLanguage();
   const { resolvedTheme, setTheme } = useTheme();
   const initializeCart = useCartStore((state) => state.initializeCart);
   const itemCount = useCartStore((state) => state.itemCount);
@@ -49,7 +49,7 @@ export function Header() {
   const navigation = (
     <>
       <Link href="/" className="text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-200">
-        Trang chu
+        {t("home")}
       </Link>
       <div className="relative">
         <button
@@ -58,7 +58,7 @@ export function Header() {
           className="inline-flex items-center gap-1 text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-200"
           aria-expanded={isProductsOpen}
         >
-          San pham
+          {t("products")}
           <ChevronDown size={16} aria-hidden="true" />
         </button>
         <div
@@ -74,8 +74,8 @@ export function Header() {
                 onClick={() => setIsProductsOpen(false)}
                 className="rounded-lg p-3 hover:bg-slate-50 dark:hover:bg-slate-900"
               >
-                <span className="block text-sm font-semibold text-ink dark:text-white">{item.label}</span>
-                <span className="mt-1 block text-xs leading-5 text-slate-500">{item.description}</span>
+                <span className="block text-sm font-semibold text-ink dark:text-white">{t(`productsList.${item.key}.label`)}</span>
+                <span className="mt-1 block text-xs leading-5 text-slate-500">{t(`productsList.${item.key}.description`)}</span>
               </Link>
             ))}
           </div>
@@ -84,15 +84,15 @@ export function Header() {
             onClick={() => setIsProductsOpen(false)}
             className="mt-2 block rounded-lg bg-slate-50 px-3 py-2 text-sm font-semibold text-aurora dark:bg-slate-900"
           >
-            Xem tat ca san pham
+            {t("allProducts")}
           </Link>
         </div>
       </div>
       <a href="#features" className="text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-200">
-        Tinh nang
+        {t("features")}
       </a>
       <a href="#newsletter" className="text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-200">
-        Dang ky
+        {t("signup")}
       </a>
     </>
   );
@@ -111,7 +111,7 @@ export function Header() {
           <button
             type="button"
             className="grid size-10 place-items-center rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-900"
-            aria-label="Wishlist"
+            aria-label={t("wishlist")}
           >
             <Heart size={18} aria-hidden="true" />
           </button>
@@ -119,7 +119,7 @@ export function Header() {
             type="button"
             onClick={openCart}
             className="relative grid size-10 place-items-center rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-900"
-            aria-label="Mo gio hang"
+            aria-label={t("openCart")}
           >
             <ShoppingBag size={18} aria-hidden="true" />
             {itemCount > 0 ? (
@@ -132,17 +132,17 @@ export function Header() {
             type="button"
             onClick={toggleTheme}
             className="grid size-10 place-items-center rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-900"
-            aria-label="Doi giao dien sang toi/sang"
+            aria-label={t("themeToggle")}
           >
             {isMounted && resolvedTheme === "dark" ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
           </button>
           <button
             type="button"
-            onClick={() => setLanguage((value) => (value === "VI" ? "EN" : "VI"))}
+            onClick={toggleLocale}
             className="inline-flex h-10 items-center gap-2 rounded-lg border border-slate-200 px-3 text-sm font-semibold text-slate-600 hover:bg-slate-50 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-900"
           >
             <Globe2 size={16} aria-hidden="true" />
-            {language}
+            {label}
           </button>
         </div>
 
@@ -150,7 +150,7 @@ export function Header() {
           type="button"
           onClick={() => setIsMenuOpen((value) => !value)}
           className="grid size-10 place-items-center rounded-lg border border-slate-200 text-slate-700 lg:hidden dark:border-slate-800 dark:text-slate-200"
-          aria-label="Mo menu"
+          aria-label={t("menu")}
         >
           {isMenuOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
         </button>
@@ -163,7 +163,7 @@ export function Header() {
             <button
               type="button"
               className="grid h-10 place-items-center rounded-lg border border-slate-200 text-slate-600 dark:border-slate-800 dark:text-slate-300"
-              aria-label="Wishlist"
+              aria-label={t("wishlist")}
             >
               <Heart size={18} aria-hidden="true" />
             </button>
@@ -171,7 +171,7 @@ export function Header() {
               type="button"
               onClick={openCart}
               className="relative grid h-10 place-items-center rounded-lg border border-slate-200 text-slate-600 dark:border-slate-800 dark:text-slate-300"
-              aria-label="Mo gio hang"
+              aria-label={t("openCart")}
             >
               <ShoppingBag size={18} aria-hidden="true" />
               {itemCount > 0 ? (
@@ -184,17 +184,17 @@ export function Header() {
               type="button"
               onClick={toggleTheme}
               className="grid h-10 place-items-center rounded-lg border border-slate-200 text-slate-600 dark:border-slate-800 dark:text-slate-300"
-              aria-label="Doi giao dien sang toi/sang"
+              aria-label={t("themeToggle")}
             >
               {isMounted && resolvedTheme === "dark" ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
             </button>
             <button
               type="button"
-              onClick={() => setLanguage((value) => (value === "VI" ? "EN" : "VI"))}
+              onClick={toggleLocale}
               className="inline-flex h-10 items-center justify-center gap-1 rounded-lg border border-slate-200 text-sm font-semibold text-slate-600 dark:border-slate-800 dark:text-slate-300"
             >
               <Globe2 size={16} aria-hidden="true" />
-              {language}
+              {label}
             </button>
           </div>
         </div>

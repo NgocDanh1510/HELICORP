@@ -1,15 +1,76 @@
 "use client";
 
+import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "next-themes";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import enMessages from "../../messages/en.json";
+import viMessages from "../../messages/vi.json";
 
 type AppProvidersProps = {
   children: React.ReactNode;
 };
 
+type Locale = "vi" | "en";
+
+type LanguageContextValue = {
+  locale: Locale;
+  label: "VI" | "EN";
+  toggleLocale: () => void;
+};
+
+const messages = {
+  vi: viMessages,
+  en: enMessages
+};
+
+const LanguageContext = createContext<LanguageContextValue | null>(null);
+
+export function useLanguage() {
+  const context = useContext(LanguageContext);
+
+  if (!context) {
+    throw new Error("useLanguage must be used inside AppProviders");
+  }
+
+  return context;
+}
+
 export function AppProviders({ children }: AppProvidersProps) {
+  const [locale, setLocale] = useState<Locale>("vi");
+
+  useEffect(() => {
+    const savedLocale = localStorage.getItem("helicorp_locale");
+
+    if (savedLocale === "en" || savedLocale === "vi") {
+      setLocale(savedLocale);
+      document.documentElement.lang = savedLocale;
+    }
+  }, []);
+
+  const value = useMemo<LanguageContextValue>(
+    () => ({
+      locale,
+      label: locale === "vi" ? "VI" : "EN",
+      toggleLocale: () => {
+        setLocale((currentLocale) => {
+          const nextLocale = currentLocale === "vi" ? "en" : "vi";
+          localStorage.setItem("helicorp_locale", nextLocale);
+          document.documentElement.lang = nextLocale;
+
+          return nextLocale;
+        });
+      }
+    }),
+    [locale]
+  );
+
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-      {children}
+      <LanguageContext.Provider value={value}>
+        <NextIntlClientProvider locale={locale} messages={messages[locale]} timeZone="Asia/Ho_Chi_Minh">
+          {children}
+        </NextIntlClientProvider>
+      </LanguageContext.Provider>
     </ThemeProvider>
   );
 }
