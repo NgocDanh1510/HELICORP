@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { CartDrawer } from "../components/cart/CartDrawer";
+import { CartMount } from "../components/cart/CartMount";
 import { Header } from "../components/layout/Header";
 import "./globals.css";
 
@@ -57,10 +57,14 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="vi">
+      <head>
+        <link rel="preconnect" href="https://placehold.co" />
+        <link rel="dns-prefetch" href="https://placehold.co" />
+      </head>
       <body className="font-sans antialiased">
         <Header />
         {children}
-        <CartDrawer />
+        <CartMount />
       </body>
     </html>
   );
