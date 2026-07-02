@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ProductPurchasePanel } from "../../../components/cart/ProductPurchasePanel";
 import { getProductBySlug, getProducts } from "../../../lib/services/productService";
@@ -11,6 +12,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 const formatCurrency = (value: number) =>
   new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(value);
+const fallbackImage = "https://placehold.co/1200x900/111827/ffffff.png?text=HeliPhone";
 
 export async function generateStaticParams() {
   const products = await getProducts();
@@ -58,7 +60,15 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     <main className="min-h-screen px-6 py-12">
       <section className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_0.95fr]">
         <div className="overflow-hidden rounded-lg bg-white shadow-soft">
-          <img src={product.images[0]} alt={product.name} className="aspect-[4/3] w-full object-cover" />
+          <Image
+            src={product.images[0] || fallbackImage}
+            alt={product.name}
+            width={1200}
+            height={900}
+            priority
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="aspect-[4/3] w-full object-cover"
+          />
         </div>
 
         <div>

@@ -1,12 +1,14 @@
 "use client";
 
 import { Minus, Plus, ShoppingBag, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useCartStore } from "../../lib/store/cartStore";
 
 const formatCurrency = (value: number) =>
   new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(value);
+const fallbackImage = "https://placehold.co/240x240/111827/ffffff.png?text=HeliPhone";
 
 export function CartDrawer() {
   const {
@@ -70,9 +72,12 @@ export function CartDrawer() {
             <div className="space-y-4">
               {cart.items.map((item) => (
                 <article key={item._id} className="grid grid-cols-[84px_1fr] gap-4 rounded-lg border border-slate-200 p-3 dark:border-slate-800">
-                  <img
-                    src={item.image || "https://placehold.co/240x240/111827/ffffff.png?text=HeliPhone"}
+                  <Image
+                    src={item.image || fallbackImage}
                     alt={item.name}
+                    width={168}
+                    height={168}
+                    sizes="84px"
                     className="aspect-square w-full rounded-md object-cover"
                   />
                   <div className="min-w-0">
