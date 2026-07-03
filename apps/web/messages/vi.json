@@ -1,38 +1,38 @@
 {
   "header": {
-    "home": "Trang chu",
-    "products": "San pham",
-    "features": "Tinh nang",
-    "signup": "Dang ky",
-    "allProducts": "Xem tat ca san pham",
-    "wishlist": "Wishlist",
-    "openCart": "Mo gio hang",
-    "menu": "Mo menu",
-    "themeToggle": "Doi giao dien sang toi/sang",
+    "home": "Trang chủ",
+    "products": "Sản phẩm",
+    "features": "Tính năng",
+    "signup": "Đăng ký",
+    "allProducts": "Xem tất cả sản phẩm",
+    "wishlist": "Yêu thích",
+    "openCart": "Mở giỏ hàng",
+    "menu": "Mở menu",
+    "themeToggle": "Đổi giao diện sáng/tối",
     "productsList": {
       "aurora": {
         "label": "Aurora",
-        "description": "Flagship gon nhe cho moi ngay"
+        "description": "Flagship gọn nhẹ cho mỗi ngày"
       },
       "pro": {
         "label": "Aurora Pro",
-        "description": "Camera Pro va hieu nang sang tao"
+        "description": "Camera Pro và hiệu năng sáng tạo"
       },
       "proMax": {
         "label": "Aurora Pro Max",
-        "description": "Man hinh lon, pin ben bi"
+        "description": "Màn hình lớn, pin bền bỉ"
       }
     }
   },
   "hero": {
     "eyebrow": "HeliPhone Aurora Series",
     "title": "HeliPhone Aurora",
-    "description": "Dong smartphone flagship voi man hinh OLED ruc ro, camera AI va thiet ke cao cap cho cong viec, sang tao va giai tri moi ngay.",
-    "primaryCta": "Kham pha san pham",
-    "secondaryCta": "Xem tinh nang",
+    "description": "Dòng smartphone flagship với màn hình OLED rực rỡ, camera AI và thiết kế cao cấp cho công việc, sáng tạo và giải trí mỗi ngày.",
+    "primaryCta": "Khám phá sản phẩm",
+    "secondaryCta": "Xem tính năng",
     "imageAlt": "HeliPhone Aurora",
     "chipTitle": "Heli A1 Neural",
-    "chipDescription": "Xu ly AI on-device nhanh va rieng tu.",
+    "chipDescription": "Xử lý AI on-device nhanh và riêng tư.",
     "stats": {
       "display": {
         "value": "120Hz",
@@ -44,76 +44,76 @@
       },
       "charging": {
         "value": "65W",
-        "label": "Sac nhanh"
+        "label": "Sạc nhanh"
       }
     }
   },
   "features": {
-    "eyebrow": "Tinh nang noi bat",
-    "title": "Moi chi tiet duoc toi uu cho trai nghiem flagship.",
-    "description": "HeliPhone Aurora tap trung vao nhung thu nguoi dung cham den moi ngay: man hinh, camera, hieu nang va pin.",
+    "eyebrow": "Tính năng nổi bật",
+    "title": "Mọi chi tiết được tối ưu cho trải nghiệm flagship.",
+    "description": "HeliPhone Aurora tập trung vào những thứ người dùng chạm đến mỗi ngày: màn hình, camera, hiệu năng và pin.",
     "items": {
       "camera": {
         "title": "Camera AI Pro",
-        "description": "Tu dong can bang anh chan dung, dem va video chuyen dong nhanh voi tone mau tu nhien."
+        "description": "Tự động cân bằng ảnh chân dung, đêm và video chuyển động nhanh với tone màu tự nhiên."
       },
       "chip": {
         "title": "Heli A1 Neural",
-        "description": "Chip flagship toi uu tac vu AI, game va da nhiem nhung van tiet kiem nang luong."
+        "description": "Chip flagship tối ưu tác vụ AI, game và đa nhiệm nhưng vẫn tiết kiệm năng lượng."
       },
       "battery": {
-        "title": "Pin ca ngay",
-        "description": "Vien pin lon ket hop sac nhanh 65W giup quay lai cong viec chi sau mot khoang nghi ngan."
+        "title": "Pin cả ngày",
+        "description": "Viên pin lớn kết hợp sạc nhanh 65W giúp quay lại công việc chỉ sau một khoảng nghỉ ngắn."
       },
       "material": {
-        "title": "Vat lieu cao cap",
-        "description": "Khung titanium hoac aluminum, mat kinh ben bi va kha nang chong vet xuoc tot hon."
+        "title": "Vật liệu cao cấp",
+        "description": "Khung titanium hoặc aluminum, mặt kính bền bỉ và khả năng chống vết xước tốt hơn."
       }
     }
   },
   "story": {
     "eyebrow": "Scrollytelling",
-    "title": "Camera, chip va pin cung chuyen dong theo cach ban dung may.",
-    "description": "Section nay dung GSAP ScrollTrigger de tao chuyen dong nhe khi nguoi dung cuon, dong thoi giam hieu ung tren mobile.",
+    "title": "Camera, chip và pin cùng chuyển động theo cách bạn dùng máy.",
+    "description": "Phần này dùng GSAP ScrollTrigger để tạo chuyển động nhẹ khi người dùng cuộn, đồng thời giảm hiệu ứng trên mobile.",
     "phoneLabel": "Aurora Motion Core",
-    "phoneDescription": "Mot trai nghiem chuyen dong nhe cho landing page ma van giu tinh gon gang.",
+    "phoneDescription": "Một trải nghiệm chuyển động nhẹ cho landing page mà vẫn giữ tính gọn gàng.",
     "items": {
       "camera": {
-        "title": "Camera theo khoanh khac",
-        "description": "He thong camera noi bat dan khi nguoi dung cuon den noi dung hinh anh."
+        "title": "Camera theo khoảnh khắc",
+        "description": "Hệ thống camera nổi bật dần khi người dùng cuộn đến nội dung hình ảnh."
       },
       "chip": {
-        "title": "Chip xu ly on-device",
-        "description": "Chuyen dong chip tao cam giac toc do nhung khong can canvas nang."
+        "title": "Chip xử lý on-device",
+        "description": "Chuyển động chip tạo cảm giác tốc độ nhưng không cần canvas nặng."
       },
       "battery": {
-        "title": "Pin duoc toi uu",
-        "description": "Hieu ung tren mobile duoc rut gon de uu tien do muot va PageSpeed."
+        "title": "Pin được tối ưu",
+        "description": "Hiệu ứng trên mobile được rút gọn để ưu tiên độ mượt và PageSpeed."
       }
     }
   },
   "newsletter": {
-    "eyebrow": "Cap nhat san pham",
-    "title": "Nhan tin moi tu HeliPhone Aurora",
-    "description": "Dang ky de nhan thong tin mo ban, uu dai va cac ban cap nhat ve dong HeliPhone Aurora.",
+    "eyebrow": "Cập nhật sản phẩm",
+    "title": "Nhận tin mới từ HeliPhone Aurora",
+    "description": "Đăng ký để nhận thông tin mở bán, ưu đãi và các bản cập nhật về dòng HeliPhone Aurora.",
     "emailLabel": "Email",
     "placeholder": "you@example.com",
-    "submit": "Dang ky",
-    "submitting": "Dang gui...",
-    "invalid": "Email chua hop le.",
-    "success": "Dang ky thanh cong. HeliCorp se gui tin moi som nhat.",
-    "error": "Chua the dang ky luc nay. Vui long thu lai."
+    "submit": "Đăng ký",
+    "submitting": "Đang gửi...",
+    "invalid": "Email chưa hợp lệ.",
+    "success": "Đăng ký thành công. HeliCorp sẽ gửi tin mới sớm nhất.",
+    "error": "Chưa thể đăng ký lúc này. Vui lòng thử lại."
   },
   "chatbot": {
-    "open": "Mo chatbot tu van",
-    "close": "Dong chatbot tu van",
-    "title": "Tu van HeliPhone",
-    "subtitle": "Hoi ve mau may, mau sac, dung luong va checkout.",
-    "minimize": "Thu gon",
-    "greeting": "Xin chao, minh co the giup ban chon HeliPhone Aurora phu hop.",
-    "placeholder": "Nhap cau hoi...",
-    "send": "Gui tin nhan",
-    "typing": "Dang tra loi...",
-    "error": "Minh chua ket noi duoc he thong tu van. Vui long thu lai sau."
+    "open": "Mở chatbot tư vấn",
+    "close": "Đóng chatbot tư vấn",
+    "title": "Tư vấn HeliPhone",
+    "subtitle": "Hỏi về dòng máy, màu sắc, dung lượng và các bước checkout.",
+    "minimize": "Thu gọn",
+    "greeting": "Xin chào, mình có thể giúp gì cho bạn trong việc chọn mua điện thoại?",
+    "placeholder": "Nhập câu hỏi của bạn...",
+    "send": "Gửi tin nhắn",
+    "typing": "Đang trả lời...",
+    "error": "Mình chưa kết nối được hệ thống tư vấn. Vui lòng thử lại sau."
   }
 }
