@@ -65,7 +65,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="vi" suppressHydrationWarning className={`${plusJakartaSans.variable}`}>
+    <html lang="vi" suppressHydrationWarning className={`${plusJakartaSans.variable} scroll-smooth scroll-pt-28`}>
       <head>
         <link rel="preconnect" href="https://placehold.co" />
         <link rel="dns-prefetch" href="https://placehold.co" />

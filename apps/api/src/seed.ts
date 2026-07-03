@@ -11,7 +11,7 @@ const products = [
     slug: "heliphone-aurora",
     price: 18990000,
     description: "HeliPhone Aurora mang đến trải nghiệm flagship gọn nhẹ với màn hình rực rỡ, camera AI và thời lượng pin cả ngày.",
-    images: [placeholder("HeliPhone Aurora")],
+    images: ["/images/products/heliphone-aurora.png"],
     specs: {
       display: "6.3 inch OLED 120Hz",
       chip: "Heli A1 Neural",
@@ -29,7 +29,7 @@ const products = [
     slug: "heliphone-aurora-pro",
     price: 24990000,
     description: "Aurora Pro nâng cấp camera tele, chip mạnh hơn và lớp vỏ titanium cho người dùng sáng tạo nội dung mỗi ngày.",
-    images: [placeholder("Aurora Pro")],
+    images: ["/images/products/heliphone-aurora-pro.png"],
     specs: {
       display: "6.5 inch LTPO OLED 1-120Hz",
       chip: "Heli A1 Pro",
@@ -47,7 +47,7 @@ const products = [
     slug: "heliphone-aurora-pro-max",
     price: 30990000,
     description: "Aurora Pro Max có màn hình lớn, pin bền bỉ và hệ camera tốt nhất dành cho công việc lẫn giải trí.",
-    images: [placeholder("Aurora Pro Max")],
+    images: ["/images/products/heliphone-aurora-pro-max.png"],
     specs: {
       display: "6.9 inch LTPO OLED 1-120Hz",
       chip: "Heli A1 Max",
@@ -65,7 +65,7 @@ const products = [
     slug: "iphone-16-pro",
     price: 28990000,
     description: "iPhone 16 Pro thiết kế titanium cực bền, nút Camera Control đột phá và chip A18 Pro mạnh mẽ vượt trội.",
-    images: [placeholder("iPhone 16 Pro")],
+    images: ["/images/products/iphone-16-pro.png"],
     specs: {
       display: "6.3 inch Super Retina XDR OLED",
       chip: "Apple A18 Pro",
@@ -83,7 +83,7 @@ const products = [
     slug: "iphone-16",
     price: 21990000,
     description: "iPhone 16 với nút Camera Control mới, chip A18 cực nhanh và thiết kế màu sắc cá tính ấn tượng.",
-    images: [placeholder("iPhone 16")],
+    images: ["/images/products/iphone-16.png"],
     specs: {
       display: "6.1 inch Super Retina XDR OLED",
       chip: "Apple A18",
@@ -101,7 +101,7 @@ const products = [
     slug: "galaxy-s25-ultra",
     price: 32990000,
     description: "Galaxy S25 Ultra dẫn đầu công nghệ với camera 200MP zoom siêu phân giải, bút S Pen và tính năng Galaxy AI tiên tiến.",
-    images: [placeholder("Galaxy S25 Ultra")],
+    images: ["/images/products/galaxy-s25-ultra.png"],
     specs: {
       display: "6.8 inch Dynamic AMOLED 2X 120Hz",
       chip: "Snapdragon 8 Elite",
@@ -119,7 +119,7 @@ const products = [
     slug: "galaxy-a55-5g",
     price: 9990000,
     description: "Galaxy A55 mang đến thiết kế cao cấp, camera chống rung OIS và hiệu năng vượt trội trong phân khúc tầm trung.",
-    images: [placeholder("Galaxy A55 5G")],
+    images: ["/images/products/galaxy-a55-5g.png"],
     specs: {
       display: "6.6 inch Super AMOLED 120Hz",
       chip: "Exynos 1480",
@@ -137,7 +137,7 @@ const products = [
     slug: "xiaomi-15-pro",
     price: 23490000,
     description: "Xiaomi 15 Pro kết hợp màn hình cong bốn cạnh siêu đẹp, ống kính Leica Summilux cao cấp và chip Snapdragon thế hệ mới.",
-    images: [placeholder("Xiaomi 15 Pro")],
+    images: ["/images/products/xiaomi-15-pro.png"],
     specs: {
       display: "6.73 inch AMOLED 120Hz 2K",
       chip: "Snapdragon 8 Elite",
@@ -155,7 +155,7 @@ const products = [
     slug: "redmi-note-13-pro-5g",
     price: 7290000,
     description: "Redmi Note 13 Pro sở hữu màn hình AMOLED 1.5K cực nét, camera 200MP siêu khủng và sạc siêu nhanh 67W.",
-    images: [placeholder("Redmi Note 13 Pro")],
+    images: ["/images/products/redmi-note-13-pro-5g.png"],
     specs: {
       display: "6.67 inch AMOLED 1.5K 120Hz",
       chip: "Snapdragon 7s Gen 2",

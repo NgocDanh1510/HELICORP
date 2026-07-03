@@ -1,7 +1,7 @@
 "use client";
 
 import { Mail, ShieldCheck } from "lucide-react";
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useRef, useEffect } from "react";
 import { z } from "zod";
 import { subscribeNewsletter } from "../../lib/services/newsletterService";
 import { useTranslations } from "next-intl";
@@ -11,6 +11,23 @@ export function NewsletterForm() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState<string | null>(null);
+
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -42,7 +59,13 @@ export function NewsletterForm() {
   };
 
   return (
-    <section id="newsletter" className="px-6 py-24 bg-surface dark:bg-slate-950">
+    <section 
+      id="newsletter" 
+      ref={ref}
+      className={`px-6 py-24 bg-surface dark:bg-slate-950 transition-all duration-1000 transform ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+      }`}
+    >
       <div className="mx-auto max-w-3xl text-center">
         <div className="mx-auto mb-6 flex size-[60px] items-center justify-center rounded-full bg-aurora/10 text-aurora">
           <Mail size={28} strokeWidth={1.5} />

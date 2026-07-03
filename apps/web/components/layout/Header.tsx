@@ -13,7 +13,7 @@ import { SearchSuggestions } from "./SearchSuggestions";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isProductsOpen, setIsProductsOpen] = useState(false);
+
   const [isMounted, setIsMounted] = useState(false);
   const t = useTranslations("header");
   const { label, toggleLocale } = useLanguage();
@@ -34,8 +34,15 @@ export function Header() {
     void initializeWishlist();
   }, [initializeCart, initializeWishlist]);
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
   useEffect(() => {
     setIsMounted(true);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleWishlistClick = () => {
@@ -53,55 +60,51 @@ export function Header() {
       <Link href="/" className="text-[15px] font-medium text-slate-600 hover:text-aurora transition-colors dark:text-slate-300">
         {t("home")}
       </Link>
-      <div className="relative group">
-        <button
-          type="button"
-          onClick={() => setIsProductsOpen((value) => !value)}
+      <div className="relative group py-6">
+        <Link
+          href="/san-pham"
           className="inline-flex items-center gap-1 text-[15px] font-medium text-slate-600 hover:text-aurora transition-colors dark:text-slate-300"
-          aria-expanded={isProductsOpen}
         >
           {t("products")}
-          <ChevronDown size={14} aria-hidden="true" />
-        </button>
+          <ChevronDown size={14} aria-hidden="true" className="transition-transform group-hover:rotate-180" />
+        </Link>
         
         {/* Mega Menu */}
         <div
-          className={`mt-6 w-full rounded-[24px] border border-slate-200/50 bg-white/95 backdrop-blur-xl p-8 shadow-[0_18px_60px_rgba(16,24,40,0.08)] lg:absolute lg:left-1/2 lg:top-8 lg:z-30 lg:mt-0 lg:w-[720px] lg:-translate-x-1/2 dark:border-slate-800/50 dark:bg-slate-950/95 transition-all ${
-            isProductsOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"
-          }`}
+          className="absolute left-1/2 top-[calc(100%-1.5rem)] z-30 w-[720px] -translate-x-1/2 rounded-[24px] border border-slate-200/50 bg-white/95 backdrop-blur-xl p-8 shadow-[0_18px_60px_rgba(16,24,40,0.08)] dark:border-slate-800/50 dark:bg-slate-950/95 transition-all duration-200 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0"
         >
           <div className="grid gap-8 lg:grid-cols-3">
             {/* Column 1: Brands */}
             <div>
               <p className="mb-4 text-xs font-bold uppercase tracking-widest text-slate-400">{t("brand")}</p>
               <ul className="space-y-3">
-                <li><Link href="/san-pham?brand=HeliCorp" onClick={() => setIsProductsOpen(false)} className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white transition-colors">HeliCorp</Link></li>
-                <li><Link href="/san-pham?brand=Apple" onClick={() => setIsProductsOpen(false)} className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white transition-colors">Apple</Link></li>
-                <li><Link href="/san-pham?brand=Samsung" onClick={() => setIsProductsOpen(false)} className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white transition-colors">Samsung</Link></li>
+                <li><Link href="/san-pham?brand=HeliCorp" className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white transition-colors">HeliCorp</Link></li>
+                <li><Link href="/san-pham?brand=Apple" className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white transition-colors">Apple</Link></li>
+                <li><Link href="/san-pham?brand=Samsung" className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white transition-colors">Samsung</Link></li>
               </ul>
             </div>
             {/* Column 2: Categories */}
             <div>
               <p className="mb-4 text-xs font-bold uppercase tracking-widest text-slate-400">{t("category")}</p>
               <ul className="space-y-3">
-                <li><Link href="/san-pham?category=Flagship" onClick={() => setIsProductsOpen(false)} className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white transition-colors">Flagship</Link></li>
-                <li><Link href="/san-pham?category=High-end" onClick={() => setIsProductsOpen(false)} className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white transition-colors">High-end</Link></li>
-                <li><Link href="/san-pham?category=Mid-range" onClick={() => setIsProductsOpen(false)} className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white transition-colors">Mid-range</Link></li>
+                <li><Link href="/san-pham?category=Flagship" className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white transition-colors">Flagship</Link></li>
+                <li><Link href="/san-pham?category=High-end" className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white transition-colors">High-end</Link></li>
+                <li><Link href="/san-pham?category=Mid-range" className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white transition-colors">Mid-range</Link></li>
               </ul>
             </div>
             {/* Column 3: Featured Products */}
             <div>
               <p className="mb-4 text-xs font-bold uppercase tracking-widest text-slate-400">{t("featured")}</p>
               <ul className="space-y-3">
-                <li><Link href="/san-pham/heliphone-aurora-pro-max.html" onClick={() => setIsProductsOpen(false)} className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white transition-colors">HeliPhone Aurora Pro Max</Link></li>
-                <li><Link href="/san-pham/iphone-16-pro.html" onClick={() => setIsProductsOpen(false)} className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white transition-colors">iPhone 16 Pro</Link></li>
+                <li><Link href="/san-pham/heliphone-aurora-pro-max.html" className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white transition-colors">HeliPhone Aurora Pro Max</Link></li>
+                <li><Link href="/san-pham/iphone-16-pro.html" className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white transition-colors">iPhone 16 Pro</Link></li>
               </ul>
             </div>
           </div>
           <div className="mt-8 border-t border-slate-100 pt-6 dark:border-slate-800">
             <Link
               href="/san-pham"
-              onClick={() => setIsProductsOpen(false)}
+             
               className="block rounded-full bg-slate-50 py-3 text-center text-sm font-bold text-aurora hover:bg-aurora/10 transition-colors dark:bg-slate-900/50 dark:hover:bg-aurora/20"
             >
               {t("allProducts")}
@@ -119,7 +122,11 @@ export function Header() {
   );
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-40 bg-transparent">
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white/80 backdrop-blur-xl shadow-soft dark:bg-slate-950/80" : "bg-transparent"
+      }`}
+    >
       <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-6 lg:px-12">
         <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight">
           <span className="grid size-9 place-items-center rounded-full bg-aurora text-white shadow-[0_0_15px_rgba(123,77,255,0.4)]">

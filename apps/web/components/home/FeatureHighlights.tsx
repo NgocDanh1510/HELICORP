@@ -3,6 +3,8 @@
 import { BatteryCharging, Camera, Cpu, Monitor, Mouse } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { useEffect, useRef, useState } from "react";
+
 const features = [
   {
     key: "camera",
@@ -24,9 +26,31 @@ const features = [
 
 export function FeatureHighlights() {
   const t = useTranslations("features");
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section id="features" className="relative px-6 py-24 bg-surface dark:bg-slate-900/50">
+    <section 
+      id="features" 
+      ref={ref}
+      className={`relative px-6 py-24 bg-surface dark:bg-slate-900/50 transition-all duration-1000 transform ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+      }`}
+    >
       {/* Scroll indicator from Figma */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-12 rounded-full border-2 border-slate-200/60 bg-white/50 backdrop-blur-md flex justify-center pt-2 shadow-sm dark:border-slate-800 dark:bg-slate-950">
         <div className="w-1.5 h-3 rounded-full bg-aurora animate-bounce" />
