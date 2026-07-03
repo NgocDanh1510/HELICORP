@@ -9,6 +9,7 @@ import { useCartStore } from "../../lib/store/cartStore";
 import { useLanguage } from "../providers/AppProviders";
 import { useAuthStore } from "../../lib/store/authStore";
 import { SearchSuggestions } from "./SearchSuggestions";
+import { useWishlistStore } from "../../lib/store/wishlistStore";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,13 +26,23 @@ export function Header() {
   const openAuthModal = useAuthStore((state) => state.openAuthModal);
   const logout = useAuthStore((state) => state.logout);
 
+  const wishlistCount = useWishlistStore((state) => state.favorites.length);
+  const initializeWishlist = useWishlistStore((state) => state.initializeWishlist);
+
   useEffect(() => {
     void initializeCart();
-  }, [initializeCart]);
+    void initializeWishlist();
+  }, [initializeCart, initializeWishlist]);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  const handleWishlistClick = () => {
+    if (!user) {
+      openAuthModal();
+    }
+  };
 
   const toggleTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
@@ -167,10 +178,16 @@ export function Header() {
 
           <button
             type="button"
-            className="grid size-10 place-items-center rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-900"
+            onClick={handleWishlistClick}
+            className="relative grid size-10 place-items-center rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-900"
             aria-label={t("wishlist")}
           >
             <Heart size={18} aria-hidden="true" />
+            {wishlistCount > 0 ? (
+              <span className="absolute -right-1 -top-1 grid min-w-5 place-items-center rounded-full bg-aurora px-1 text-[11px] font-bold text-white">
+                {wishlistCount}
+              </span>
+            ) : null}
           </button>
           <button
             type="button"
@@ -249,10 +266,16 @@ export function Header() {
           <div className="mt-5 grid grid-cols-4 gap-2">
             <button
               type="button"
-              className="grid h-10 place-items-center rounded-lg border border-slate-200 text-slate-600 dark:border-slate-800 dark:text-slate-300"
+              onClick={handleWishlistClick}
+              className="relative grid h-10 place-items-center rounded-lg border border-slate-200 text-slate-600 dark:border-slate-800 dark:text-slate-300"
               aria-label={t("wishlist")}
             >
               <Heart size={18} aria-hidden="true" />
+              {wishlistCount > 0 ? (
+                <span className="absolute right-2 top-1 grid min-w-5 place-items-center rounded-full bg-aurora px-1 text-[11px] font-bold text-white">
+                  {wishlistCount}
+                </span>
+              ) : null}
             </button>
             <button
               type="button"
