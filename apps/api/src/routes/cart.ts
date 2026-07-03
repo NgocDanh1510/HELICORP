@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { z } from "zod";
 import { Cart } from "../models/Cart";
+import { authMiddleware, type AuthenticatedRequest } from "../middlewares/auth";
 
 const router = Router();
 
@@ -24,11 +25,17 @@ type CartItemSnapshot = {
   storage: string;
 };
 
-router.get("/:sessionId", async (req, res, next) => {
+// Use authMiddleware for all cart endpoints
+router.use(authMiddleware as any);
+
+// @route   GET /api/cart
+// @desc    Get or create user's cart
+router.get("/", async (req: AuthenticatedRequest, res, next) => {
   try {
+    const userId = req.user?.id;
     const cart = await Cart.findOneAndUpdate(
-      { sessionId: req.params.sessionId },
-      { $setOnInsert: { sessionId: req.params.sessionId, items: [] } },
+      { userId },
+      { $setOnInsert: { userId, items: [] } },
       { new: true, upsert: true }
     );
 
@@ -38,12 +45,15 @@ router.get("/:sessionId", async (req, res, next) => {
   }
 });
 
-router.post("/:sessionId/items", async (req, res, next) => {
+// @route   POST /api/cart/items
+// @desc    Add item to user's cart
+router.post("/items", async (req: AuthenticatedRequest, res, next) => {
   try {
+    const userId = req.user?.id;
     const item = addItemSchema.parse(req.body);
     const cart = await Cart.findOneAndUpdate(
-      { sessionId: req.params.sessionId },
-      { $setOnInsert: { sessionId: req.params.sessionId, items: [] } },
+      { userId },
+      { $setOnInsert: { userId, items: [] } },
       { new: true, upsert: true }
     );
 
@@ -67,10 +77,13 @@ router.post("/:sessionId/items", async (req, res, next) => {
   }
 });
 
-router.put("/:sessionId/items/:itemId", async (req, res, next) => {
+// @route   PUT /api/cart/items/:itemId
+// @desc    Update item quantity in user's cart
+router.put("/items/:itemId", async (req: AuthenticatedRequest, res, next) => {
   try {
+    const userId = req.user?.id;
     const data = updateItemSchema.parse(req.body);
-    const cart = await Cart.findOne({ sessionId: req.params.sessionId });
+    const cart = await Cart.findOne({ userId });
 
     if (!cart) {
       res.status(404).json({ message: "Cart not found" });
@@ -92,9 +105,12 @@ router.put("/:sessionId/items/:itemId", async (req, res, next) => {
   }
 });
 
-router.delete("/:sessionId/items/:itemId", async (req, res, next) => {
+// @route   DELETE /api/cart/items/:itemId
+// @desc    Remove item from user's cart
+router.delete("/items/:itemId", async (req: AuthenticatedRequest, res, next) => {
   try {
-    const cart = await Cart.findOne({ sessionId: req.params.sessionId });
+    const userId = req.user?.id;
+    const cart = await Cart.findOne({ userId });
 
     if (!cart) {
       res.status(404).json({ message: "Cart not found" });

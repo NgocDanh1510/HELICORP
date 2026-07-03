@@ -15,7 +15,7 @@ const cartItemSchema = new Schema(
 
 const cartSchema = new Schema(
   {
-    sessionId: { type: String, required: true, unique: true, index: true },
+    userId: { type: Schema.Types.ObjectId, ref: "User", required: true, unique: true, index: true },
     items: [cartItemSchema]
   },
   { timestamps: true }

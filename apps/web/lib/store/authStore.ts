@@ -1,6 +1,8 @@
 import Cookies from "js-cookie";
 import { create } from "zustand";
 import { getMe, loginUser, logoutUser, registerUser } from "../services/authService";
+import { useCartStore } from "./cartStore";
+import { useWishlistStore } from "./wishlistStore";
 
 const REFRESH_COOKIE = "helicorp_refresh_token";
 
@@ -55,6 +57,11 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         isLoading: false,
         error: null
       });
+
+      // Initialize cart and wishlist
+      void useCartStore.getState().initializeCart();
+      void useWishlistStore.getState().initializeWishlist();
+
       return true;
     } catch (err: any) {
       set({ isLoading: false, error: err.message || "Failed to login" });
@@ -77,6 +84,11 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         isLoading: false,
         error: null
       });
+
+      // Initialize cart and wishlist
+      void useCartStore.getState().initializeCart();
+      void useWishlistStore.getState().initializeWishlist();
+
       return true;
     } catch (err: any) {
       set({ isLoading: false, error: err.message || "Failed to register" });
@@ -89,6 +101,8 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     
     // Clear state immediately on client side for responsive UX
     Cookies.remove(REFRESH_COOKIE);
+    useCartStore.getState().clearLocalCart();
+    useWishlistStore.getState().clearWishlist();
     set({
       user: null,
       accessToken: null,
@@ -137,9 +151,15 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         accessToken,
         isLoading: false
       });
+
+      // Initialize cart and wishlist
+      void useCartStore.getState().initializeCart();
+      void useWishlistStore.getState().initializeWishlist();
     } catch (err) {
       console.warn("Session initialization failed, logging out client.", err);
       Cookies.remove(REFRESH_COOKIE);
+      useCartStore.getState().clearLocalCart();
+      useWishlistStore.getState().clearWishlist();
       set({
         user: null,
         accessToken: null,

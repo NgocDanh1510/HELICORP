@@ -16,7 +16,8 @@ const productSchema = new Schema(
     },
     colors: [{ type: String, required: true }],
     storageOptions: [{ type: String, required: true }],
-    category: { type: String, required: true, index: true }
+    category: { type: String, required: true, index: true },
+    brand: { type: String, required: true, index: true, trim: true }
   },
   { timestamps: true }
 );

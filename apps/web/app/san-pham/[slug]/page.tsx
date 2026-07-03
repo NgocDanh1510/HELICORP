@@ -15,7 +15,7 @@ const formatCurrency = (value: number) =>
 const fallbackImage = "https://placehold.co/1200x900/111827/ffffff.png?text=HeliPhone";
 
 export async function generateStaticParams() {
-  const products = await getProducts();
+  const { products } = await getProducts();
 
   return products.map((product) => ({ slug: product.slug }));
 }

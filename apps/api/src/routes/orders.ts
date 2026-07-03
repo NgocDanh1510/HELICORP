@@ -2,6 +2,7 @@ import { Router } from "express";
 import { z } from "zod";
 import { Cart } from "../models/Cart";
 import { Order } from "../models/Order";
+import { authMiddleware, type AuthenticatedRequest } from "../middlewares/auth";
 
 const router = Router();
 
@@ -22,10 +23,11 @@ type CartOrderItem = {
   quantity: number;
 };
 
-router.post("/", async (req, res, next) => {
+router.post("/", authMiddleware as any, async (req: AuthenticatedRequest, res, next) => {
   try {
+    const userId = req.user?.id;
     const data = checkoutSchema.parse(req.body);
-    const cart = await Cart.findOne({ sessionId: data.sessionId });
+    const cart = await Cart.findOne({ userId });
 
     if (!cart || cart.items.length === 0) {
       res.status(400).json({ message: "Cart is empty" });
@@ -52,7 +54,9 @@ router.post("/", async (req, res, next) => {
       totalPrice
     });
 
-    await Cart.deleteOne({ sessionId: data.sessionId });
+    // Clear cart items
+    cart.items = [] as any;
+    await cart.save();
 
     res.status(201).json({ orderId: order._id, order });
   } catch (error) {

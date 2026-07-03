@@ -1,7 +1,7 @@
 "use client";
 
-import Cookies from "js-cookie";
 import { create } from "zustand";
+import { useAuthStore } from "./authStore";
 import {
   addCartItem,
   getCart,
@@ -12,32 +12,9 @@ import {
   type CartItem
 } from "../services/cartService";
 
-const SESSION_COOKIE = "helicorp_session_id";
-
-function createSessionId() {
-  if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
-    return crypto.randomUUID();
-  }
-
-  return `session_${Date.now()}_${Math.random().toString(16).slice(2)}`;
-}
-
-function getOrCreateSessionId() {
-  const existingSessionId = Cookies.get(SESSION_COOKIE);
-
-  if (existingSessionId) {
-    return existingSessionId;
-  }
-
-  const sessionId = createSessionId();
-  Cookies.set(SESSION_COOKIE, sessionId, { expires: 30, sameSite: "lax" });
-
-  return sessionId;
-}
-
 type CartState = {
   cart: Cart | null;
-  sessionId: string | null;
+  sessionId: string | null; // Kept for compatibility, returns user ID if logged in
   isLoading: boolean;
   isOpen: boolean;
   error: string | null;
@@ -81,28 +58,37 @@ export const useCartStore = create<CartState>((set, get) => ({
   closeCart: () => set({ isOpen: false }),
   toggleCart: () => set((state) => ({ isOpen: !state.isOpen })),
   initializeCart: async () => {
-    const sessionId = get().sessionId ?? getOrCreateSessionId();
+    const user = useAuthStore.getState().user;
+    if (!user) {
+      set({ cart: null, itemCount: 0, totalPrice: 0, sessionId: null, isLoading: false });
+      return;
+    }
 
-    set({ sessionId, isLoading: true, error: null });
+    set({ sessionId: user.id, isLoading: true, error: null });
 
-    const cart = await getCart(sessionId);
+    const cart = await getCart();
 
     if (!cart) {
-      set({ isLoading: false, error: "Khong the tai gio hang." });
+      set({ isLoading: false, error: "Không thể tải giỏ hàng." });
       return;
     }
 
     set({ ...stateFromCart(cart), isLoading: false, error: null });
   },
   addItem: async (item) => {
-    const sessionId = get().sessionId ?? getOrCreateSessionId();
+    const user = useAuthStore.getState().user;
+    if (!user) {
+      // Prompt sign in
+      useAuthStore.getState().openAuthModal();
+      return false;
+    }
 
-    set({ sessionId, isLoading: true, error: null });
+    set({ sessionId: user.id, isLoading: true, error: null });
 
-    const cart = await addCartItem(sessionId, item);
+    const cart = await addCartItem(item);
 
     if (!cart) {
-      set({ isLoading: false, error: "Khong the them san pham vao gio." });
+      set({ isLoading: false, error: "Không thể thêm sản phẩm vào giỏ." });
       return false;
     }
 
@@ -110,18 +96,17 @@ export const useCartStore = create<CartState>((set, get) => ({
     return true;
   },
   updateItemQuantity: async (itemId, quantity) => {
-    const sessionId = get().sessionId;
-
-    if (!sessionId) {
+    const user = useAuthStore.getState().user;
+    if (!user) {
       return false;
     }
 
     set({ isLoading: true, error: null });
 
-    const cart = await updateCartItem(sessionId, itemId, quantity);
+    const cart = await updateCartItem(itemId, quantity);
 
     if (!cart) {
-      set({ isLoading: false, error: "Khong the cap nhat gio hang." });
+      set({ isLoading: false, error: "Không thể cập nhật giỏ hàng." });
       return false;
     }
 
@@ -129,23 +114,22 @@ export const useCartStore = create<CartState>((set, get) => ({
     return true;
   },
   removeItem: async (itemId) => {
-    const sessionId = get().sessionId;
-
-    if (!sessionId) {
+    const user = useAuthStore.getState().user;
+    if (!user) {
       return false;
     }
 
     set({ isLoading: true, error: null });
 
-    const cart = await removeCartItem(sessionId, itemId);
+    const cart = await removeCartItem(itemId);
 
     if (!cart) {
-      set({ isLoading: false, error: "Khong the xoa san pham." });
+      set({ isLoading: false, error: "Không thể xóa sản phẩm." });
       return false;
     }
 
     set({ ...stateFromCart(cart), isLoading: false, error: null });
     return true;
   },
-  clearLocalCart: () => set({ cart: null, itemCount: 0, totalPrice: 0, isOpen: false })
+  clearLocalCart: () => set({ cart: null, itemCount: 0, totalPrice: 0, isOpen: false, sessionId: null })
 }));

@@ -191,4 +191,49 @@ router.get("/me", authMiddleware as any, async (req: AuthenticatedRequest, res, 
   }
 });
 
+// @route   GET /api/auth/favorites
+// @desc    Get populated list of user's favorite products
+router.get("/favorites", authMiddleware as any, async (req: AuthenticatedRequest, res, next) => {
+  try {
+    const user = await User.findById(req.user?.id).populate("favoriteProducts");
+    if (!user) {
+      res.status(404).json({ message: "User not found" });
+      return;
+    }
+    res.json({ favorites: user.favoriteProducts || [] });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// @route   POST /api/auth/favorites
+// @desc    Toggle favorite product status
+router.post("/favorites", authMiddleware as any, async (req: AuthenticatedRequest, res, next) => {
+  try {
+    const { productId } = z.object({ productId: z.string() }).parse(req.body);
+    const user = await User.findById(req.user?.id);
+    if (!user) {
+      res.status(404).json({ message: "User not found" });
+      return;
+    }
+
+    if (!user.favoriteProducts) {
+      user.favoriteProducts = [] as any;
+    }
+
+    const index = user.favoriteProducts.indexOf(productId as any);
+    if (index > -1) {
+      user.favoriteProducts.splice(index, 1);
+    } else {
+      user.favoriteProducts.push(productId as any);
+    }
+
+    await user.save();
+    const populatedUser = await User.findById(user._id).populate("favoriteProducts");
+    res.json({ favorites: populatedUser?.favoriteProducts || [] });
+  } catch (error) {
+    next(error);
+  }
+});
+
 export default router;

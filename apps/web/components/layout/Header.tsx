@@ -8,21 +8,7 @@ import { useEffect, useState } from "react";
 import { useCartStore } from "../../lib/store/cartStore";
 import { useLanguage } from "../providers/AppProviders";
 import { useAuthStore } from "../../lib/store/authStore";
-
-const productLinks = [
-  {
-    key: "aurora",
-    href: "/san-pham/heliphone-aurora.html"
-  },
-  {
-    key: "pro",
-    href: "/san-pham/heliphone-aurora-pro.html"
-  },
-  {
-    key: "proMax",
-    href: "/san-pham/heliphone-aurora-pro-max.html"
-  }
-];
+import { SearchSuggestions } from "./SearchSuggestions";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -66,31 +52,94 @@ export function Header() {
           {t("products")}
           <ChevronDown size={16} aria-hidden="true" />
         </button>
+        
+        {/* Mega Menu */}
         <div
-          className={`mt-2 w-full rounded-lg border border-slate-200 bg-white p-3 shadow-soft lg:absolute lg:left-1/2 lg:top-8 lg:z-30 lg:mt-0 lg:w-[520px] lg:-translate-x-1/2 dark:border-slate-800 dark:bg-slate-950 ${
+          className={`mt-2 w-full rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl lg:absolute lg:left-1/2 lg:top-8 lg:z-30 lg:mt-0 lg:w-[640px] lg:-translate-x-1/2 dark:border-slate-800 dark:bg-slate-950 transition-all ${
             isProductsOpen ? "block" : "hidden"
           }`}
         >
-          <div className="grid gap-2 lg:grid-cols-3">
-            {productLinks.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsProductsOpen(false)}
-                className="rounded-lg p-3 hover:bg-slate-50 dark:hover:bg-slate-900"
-              >
-                <span className="block text-sm font-semibold text-ink dark:text-white">{t(`productsList.${item.key}.label`)}</span>
-                <span className="mt-1 block text-xs leading-5 text-slate-500">{t(`productsList.${item.key}.description`)}</span>
-              </Link>
-            ))}
+          <div className="grid gap-6 lg:grid-cols-3">
+            {/* Column 1: Brands */}
+            <div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-wider text-slate-400">Thương hiệu</p>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="/san-pham?brand=HeliCorp" onClick={() => setIsProductsOpen(false)} className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white">
+                    HeliCorp
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/san-pham?brand=Apple" onClick={() => setIsProductsOpen(false)} className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white">
+                    Apple (iPhone)
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/san-pham?brand=Samsung" onClick={() => setIsProductsOpen(false)} className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white">
+                    Samsung
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/san-pham?brand=Xiaomi" onClick={() => setIsProductsOpen(false)} className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white">
+                    Xiaomi
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 2: Categories */}
+            <div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-wider text-slate-400">Phân khúc</p>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="/san-pham?category=Flagship" onClick={() => setIsProductsOpen(false)} className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white">
+                    Flagship (Cao cấp)
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/san-pham?category=High-end" onClick={() => setIsProductsOpen(false)} className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white">
+                    High-end (Cận cao cấp)
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/san-pham?category=Mid-range" onClick={() => setIsProductsOpen(false)} className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white">
+                    Mid-range (Tầm trung)
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 3: Featured Products */}
+            <div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-wider text-slate-400">Nổi bật</p>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="/san-pham/heliphone-aurora-pro-max.html" onClick={() => setIsProductsOpen(false)} className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white">
+                    HeliPhone Aurora Pro Max
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/san-pham/iphone-16-pro.html" onClick={() => setIsProductsOpen(false)} className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white">
+                    iPhone 16 Pro
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/san-pham/galaxy-s25-ultra.html" onClick={() => setIsProductsOpen(false)} className="block text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-300 dark:hover:text-white">
+                    Galaxy S25 Ultra
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
-          <Link
-            href="/san-pham"
-            onClick={() => setIsProductsOpen(false)}
-            className="mt-2 block rounded-lg bg-slate-50 px-3 py-2 text-sm font-semibold text-aurora dark:bg-slate-900"
-          >
-            {t("allProducts")}
-          </Link>
+          <div className="mt-6 border-t border-slate-100 pt-4 dark:border-slate-800">
+            <Link
+              href="/san-pham"
+              onClick={() => setIsProductsOpen(false)}
+              className="block rounded-xl bg-slate-50 py-2.5 text-center text-xs font-bold text-aurora hover:bg-slate-100 transition-colors dark:bg-slate-900/50 dark:hover:bg-slate-900"
+            >
+              Xem tất cả sản phẩm
+            </Link>
+          </div>
         </div>
       </div>
       <a href="#features" className="text-sm font-semibold text-slate-700 hover:text-aurora dark:text-slate-200">
@@ -113,6 +162,9 @@ export function Header() {
         <nav className="hidden items-center gap-7 lg:flex">{navigation}</nav>
 
         <div className="hidden items-center gap-2 lg:flex">
+          {/* Autocomplete Search Suggestions */}
+          <SearchSuggestions />
+
           <button
             type="button"
             className="grid size-10 place-items-center rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-900"
@@ -188,6 +240,11 @@ export function Header() {
 
       {isMenuOpen ? (
         <div className="border-t border-slate-200 bg-white px-6 py-4 lg:hidden dark:border-slate-800 dark:bg-slate-950">
+          {/* Mobile Search suggestions */}
+          <div className="mb-4">
+            <SearchSuggestions />
+          </div>
+
           <nav className="flex flex-col gap-4">{navigation}</nav>
           <div className="mt-5 grid grid-cols-4 gap-2">
             <button
