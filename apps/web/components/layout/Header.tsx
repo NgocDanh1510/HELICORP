@@ -1,12 +1,13 @@
 "use client";
 
-import { ChevronDown, Globe2, Heart, Menu, Moon, ShoppingBag, Sun, X } from "lucide-react";
+import { ChevronDown, Globe2, Heart, Menu, Moon, ShoppingBag, Sun, X, LogOut } from "lucide-react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { useCartStore } from "../../lib/store/cartStore";
 import { useLanguage } from "../providers/AppProviders";
+import { useAuthStore } from "../../lib/store/authStore";
 
 const productLinks = [
   {
@@ -33,6 +34,10 @@ export function Header() {
   const initializeCart = useCartStore((state) => state.initializeCart);
   const itemCount = useCartStore((state) => state.itemCount);
   const openCart = useCartStore((state) => state.openCart);
+
+  const user = useAuthStore((state) => state.user);
+  const openAuthModal = useAuthStore((state) => state.openAuthModal);
+  const logout = useAuthStore((state) => state.logout);
 
   useEffect(() => {
     void initializeCart();
@@ -144,6 +149,31 @@ export function Header() {
             <Globe2 size={16} aria-hidden="true" />
             {label}
           </button>
+
+          {/* User Account Controls */}
+          {user ? (
+            <div className="flex items-center gap-2 border-l border-slate-200 pl-3 dark:border-slate-800">
+              <span className="flex size-9 items-center justify-center rounded-full bg-aurora/10 text-xs font-bold text-aurora dark:bg-aurora/25 dark:text-white" title={user.name}>
+                {user.name.charAt(0).toUpperCase()}
+              </span>
+              <button
+                type="button"
+                onClick={() => logout()}
+                className="grid size-9 place-items-center rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 hover:text-red-500 dark:border-slate-800 dark:text-slate-400 dark:hover:bg-slate-900"
+                title="Đăng xuất"
+              >
+                <LogOut size={16} />
+              </button>
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={openAuthModal}
+              className="inline-flex h-10 items-center justify-center rounded-lg bg-slate-900 px-4 text-sm font-semibold text-white transition-all hover:bg-slate-800 active:scale-[0.98] dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100"
+            >
+              Đăng nhập
+            </button>
+          )}
         </div>
 
         <button
@@ -196,6 +226,44 @@ export function Header() {
               <Globe2 size={16} aria-hidden="true" />
               {label}
             </button>
+          </div>
+
+          {/* Mobile Auth Row */}
+          <div className="mt-5 border-t border-slate-100 pt-4 dark:border-slate-800/80">
+            {user ? (
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="flex size-9 items-center justify-center rounded-full bg-aurora/10 text-xs font-bold text-aurora dark:bg-aurora/25 dark:text-white">
+                    {user.name.charAt(0).toUpperCase()}
+                  </span>
+                  <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">
+                    {user.name}
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    logout();
+                    setIsMenuOpen(false);
+                  }}
+                  className="flex items-center gap-1.5 text-sm font-semibold text-red-500 hover:text-red-600"
+                >
+                  <LogOut size={16} />
+                  Đăng xuất
+                </button>
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  openAuthModal();
+                  setIsMenuOpen(false);
+                }}
+                className="flex w-full h-11 items-center justify-center rounded-xl bg-slate-900 text-sm font-semibold text-white dark:bg-white dark:text-slate-950"
+              >
+                Đăng nhập
+              </button>
+            )}
           </div>
         </div>
       ) : null}

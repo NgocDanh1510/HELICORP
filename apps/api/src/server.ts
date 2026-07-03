@@ -8,6 +8,7 @@ import chatbotRouter from "./routes/chatbot";
 import newsletterRouter from "./routes/newsletter";
 import ordersRouter from "./routes/orders";
 import productsRouter from "./routes/products";
+import authRouter from "./routes/auth";
 
 const app = express();
 const port = Number(process.env.PORT || 4000);
@@ -25,6 +26,7 @@ app.use("/api/cart", cartRouter);
 app.use("/api/orders", ordersRouter);
 app.use("/api/newsletter", newsletterRouter);
 app.use("/api/chatbot", chatbotRouter);
+app.use("/api/auth", authRouter);
 
 const errorHandler: ErrorRequestHandler = (error, _req, res, _next) => {
   if (error instanceof ZodError) {

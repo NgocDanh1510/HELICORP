@@ -13,11 +13,14 @@ const chatbotSchema = z.object({
   history: z.array(chatMessageSchema).max(8).optional()
 });
 
-type AzureChatCompletionResponse = {
-  choices?: Array<{
-    message?: {
-      content?: string;
-    };
+type AzureResponsesApiResponse = {
+  output?: Array<{
+    type?: string;
+    role?: string;
+    content?: Array<{
+      type?: string;
+      text?: string;
+    }>;
   }>;
 };
 
@@ -26,22 +29,14 @@ router.post("/", async (req, res, next) => {
     const data = chatbotSchema.parse(req.body);
     const endpoint = process.env.AZURE_OPENAI_ENDPOINT;
     const apiKey = process.env.AZURE_OPENAI_API_KEY;
-    const deployment = process.env.AZURE_OPENAI_DEPLOYMENT;
-    const apiVersion = process.env.AZURE_OPENAI_API_VERSION || "2024-02-15-preview";
+    const deployment = process.env.AZURE_OPENAI_DEPLOYMENT_NAME;
 
     if (!endpoint || !apiKey || !deployment) {
       res.status(503).json({ message: "Chatbot is not configured" });
       return;
     }
 
-    const baseUrl = endpoint.replace(/\/$/, "");
-    const url = `${baseUrl}/openai/deployments/${encodeURIComponent(deployment)}/chat/completions?api-version=${encodeURIComponent(apiVersion)}`;
-    const messages = [
-      {
-        role: "system",
-        content:
-          "You are a concise HeliCorp product advisor. Help customers compare HeliPhone Aurora models, colors, storage and checkout steps. Reply in the same language as the user."
-      },
+    const input = [
       ...(data.history ?? []),
       {
         role: "user",
@@ -49,26 +44,32 @@ router.post("/", async (req, res, next) => {
       }
     ];
 
-    const response = await fetch(url, {
+    const response = await fetch(endpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "api-key": apiKey
       },
       body: JSON.stringify({
-        messages,
+        model: deployment,
+        instructions:
+          "You are a concise HeliCorp product advisor. Help customers compare HeliPhone Aurora models, colors, storage and checkout steps. Reply in the same language as the user.",
+        input,
         temperature: 0.4,
-        max_tokens: 500
+        max_output_tokens: 500
       })
     });
 
     if (!response.ok) {
-      res.status(502).json({ message: "Chatbot provider failed" });
+      const errorText = await response.text();
+      console.error("Chatbot provider error:", response.status, errorText);
+      res.status(502).json({ message: "Chatbot provider failed", status: response.status, details: errorText });
       return;
     }
 
-    const result = (await response.json()) as AzureChatCompletionResponse;
-    const reply = result.choices?.[0]?.message?.content?.trim();
+    const result = (await response.json()) as AzureResponsesApiResponse;
+    const replyObj = result.output?.[0]?.content?.find((c: any) => c.type === "output_text");
+    const reply = replyObj?.text?.trim();
 
     if (!reply) {
       res.status(502).json({ message: "Chatbot provider returned an empty response" });

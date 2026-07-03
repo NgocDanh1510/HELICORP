@@ -3,8 +3,14 @@
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "next-themes";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import dynamic from "next/dynamic";
 import enMessages from "../../messages/en.json";
 import viMessages from "../../messages/vi.json";
+import { useAuthStore } from "../../lib/store/authStore";
+
+const AuthModal = dynamic(() => import("../auth/AuthModal").then((module) => module.AuthModal), {
+  ssr: false
+});
 
 type AppProvidersProps = {
   children: React.ReactNode;
@@ -37,6 +43,11 @@ export function useLanguage() {
 
 export function AppProviders({ children }: AppProvidersProps) {
   const [locale, setLocale] = useState<Locale>("vi");
+  const initializeAuth = useAuthStore((state) => state.initializeAuth);
+
+  useEffect(() => {
+    void initializeAuth();
+  }, [initializeAuth]);
 
   useEffect(() => {
     const savedLocale = localStorage.getItem("helicorp_locale");
@@ -69,6 +80,7 @@ export function AppProviders({ children }: AppProvidersProps) {
       <LanguageContext.Provider value={value}>
         <NextIntlClientProvider locale={locale} messages={messages[locale]} timeZone="Asia/Ho_Chi_Minh">
           {children}
+          <AuthModal />
         </NextIntlClientProvider>
       </LanguageContext.Provider>
     </ThemeProvider>
