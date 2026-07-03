@@ -1,24 +1,24 @@
- "use client";
+"use client";
 
-import { BatteryCharging, Camera, Cpu, ShieldCheck } from "lucide-react";
+import { BatteryCharging, Camera, Cpu, Monitor, Mouse } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 const features = [
   {
     key: "camera",
-    icon: Camera,
+    icon: Camera
   },
   {
     key: "chip",
-    icon: Cpu,
+    icon: Cpu
   },
   {
     key: "battery",
-    icon: BatteryCharging,
+    icon: BatteryCharging
   },
   {
-    key: "material",
-    icon: ShieldCheck,
+    key: "screen",
+    icon: Monitor
   }
 ];
 
@@ -26,29 +26,32 @@ export function FeatureHighlights() {
   const t = useTranslations("features");
 
   return (
-    <section id="features" className="px-6 py-14">
-      <div className="mx-auto max-w-6xl">
-        <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-wide text-aurora">{t("eyebrow")}</p>
-          <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl dark:text-white">
-            {t("title")}
+    <section id="features" className="relative px-6 py-24 bg-surface dark:bg-slate-900/50">
+      {/* Scroll indicator from Figma */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-12 rounded-full border-2 border-slate-200/60 bg-white/50 backdrop-blur-md flex justify-center pt-2 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+        <div className="w-1.5 h-3 rounded-full bg-aurora animate-bounce" />
+      </div>
+
+      <div className="mx-auto max-w-7xl">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <p className="text-xs font-bold uppercase tracking-widest text-aurora mb-4">{t("eyebrow")}</p>
+          <h2 className="text-[44px] leading-tight font-bold tracking-tight text-ink sm:text-[56px] dark:text-white">
+            <span className="block">{t("title1")}</span>
+            <span className="block text-aurora mt-1">{t("title2")}</span>
           </h2>
-          <p className="mt-4 leading-7 text-slate-600 dark:text-slate-300">
-            {t("description")}
-          </p>
         </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => {
             const Icon = feature.icon;
 
             return (
-              <article key={feature.key} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-950">
-                <span className="grid size-11 place-items-center rounded-lg bg-aurora/10 text-aurora">
-                  <Icon size={22} aria-hidden="true" />
+              <article key={feature.key} className="rounded-[32px] border border-transparent bg-white p-8 shadow-card hover:shadow-[0_8px_30px_rgba(123,77,255,0.08)] transition-all dark:border-slate-800/50 dark:bg-slate-950">
+                <span className="flex size-[60px] items-center justify-center rounded-[20px] bg-aurora/10 text-aurora mb-8">
+                  <Icon size={28} strokeWidth={1.5} />
                 </span>
-                <h3 className="mt-5 text-lg font-semibold text-ink dark:text-white">{t(`items.${feature.key}.title`)}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">{t(`items.${feature.key}.description`)}</p>
+                <h3 className="text-xl font-bold text-ink dark:text-white">{t(`items.${feature.key}.title`)}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-slate-500 dark:text-slate-400">{t(`items.${feature.key}.description`)}</p>
               </article>
             );
           })}

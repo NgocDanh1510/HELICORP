@@ -29,7 +29,7 @@ export function ProductSort() {
       <select
         value={currentSort}
         onChange={handleSortChange}
-        className="h-10 rounded-xl border border-slate-200 bg-white px-3 text-xs text-slate-700 outline-none transition-all focus:border-aurora dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200"
+        className="h-10 rounded-full border border-slate-200 bg-white px-4 text-xs text-slate-700 outline-none transition-all focus:border-aurora dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200"
       >
         <option value="newest">Mới nhất</option>
         <option value="price_asc">Giá tăng dần</option>

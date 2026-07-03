@@ -1,8 +1,6 @@
 import Cookies from "js-cookie";
 import { create } from "zustand";
 import { getMe, loginUser, logoutUser, registerUser } from "../services/authService";
-import { useCartStore } from "./cartStore";
-import { useWishlistStore } from "./wishlistStore";
 
 const REFRESH_COOKIE = "helicorp_refresh_token";
 
@@ -59,8 +57,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       });
 
       // Initialize cart and wishlist
-      void useCartStore.getState().initializeCart();
-      void useWishlistStore.getState().initializeWishlist();
+      const cartStore = (await import("./cartStore")).useCartStore;
+      const wishlistStore = (await import("./wishlistStore")).useWishlistStore;
+      void cartStore.getState().initializeCart();
+      void wishlistStore.getState().initializeWishlist();
 
       return true;
     } catch (err: any) {
@@ -86,8 +86,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       });
 
       // Initialize cart and wishlist
-      void useCartStore.getState().initializeCart();
-      void useWishlistStore.getState().initializeWishlist();
+      const cartStore = (await import("./cartStore")).useCartStore;
+      const wishlistStore = (await import("./wishlistStore")).useWishlistStore;
+      void cartStore.getState().initializeCart();
+      void wishlistStore.getState().initializeWishlist();
 
       return true;
     } catch (err: any) {
@@ -101,8 +103,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     
     // Clear state immediately on client side for responsive UX
     Cookies.remove(REFRESH_COOKIE);
-    useCartStore.getState().clearLocalCart();
-    useWishlistStore.getState().clearWishlist();
+    const cartStore = (await import("./cartStore")).useCartStore;
+    const wishlistStore = (await import("./wishlistStore")).useWishlistStore;
+    cartStore.getState().clearLocalCart();
+    wishlistStore.getState().clearWishlist();
     set({
       user: null,
       accessToken: null,
@@ -153,13 +157,17 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       });
 
       // Initialize cart and wishlist
-      void useCartStore.getState().initializeCart();
-      void useWishlistStore.getState().initializeWishlist();
+      const cartStore = (await import("./cartStore")).useCartStore;
+      const wishlistStore = (await import("./wishlistStore")).useWishlistStore;
+      void cartStore.getState().initializeCart();
+      void wishlistStore.getState().initializeWishlist();
     } catch (err) {
       console.warn("Session initialization failed, logging out client.", err);
       Cookies.remove(REFRESH_COOKIE);
-      useCartStore.getState().clearLocalCart();
-      useWishlistStore.getState().clearWishlist();
+      const cartStore = (await import("./cartStore")).useCartStore;
+      const wishlistStore = (await import("./wishlistStore")).useWishlistStore;
+      cartStore.getState().clearLocalCart();
+      wishlistStore.getState().clearWishlist();
       set({
         user: null,
         accessToken: null,

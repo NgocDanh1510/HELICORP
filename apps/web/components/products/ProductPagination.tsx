@@ -43,7 +43,7 @@ export function ProductPagination({ currentPage, totalPages }: ProductPagination
       <button
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="flex size-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300 dark:hover:bg-slate-900"
+        className="flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300 dark:hover:bg-slate-900"
         aria-label="Trang trước"
       >
         <ChevronLeft size={16} />
@@ -54,7 +54,7 @@ export function ProductPagination({ currentPage, totalPages }: ProductPagination
         <button
           key={num}
           onClick={() => handlePageChange(num)}
-          className={`flex size-10 items-center justify-center rounded-xl text-xs font-semibold transition-all ${
+          className={`flex size-10 items-center justify-center rounded-full text-xs font-semibold transition-all ${
             currentPage === num
               ? "bg-aurora text-white shadow-lg shadow-aurora/20"
               : "border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300 dark:hover:bg-slate-900"
@@ -68,7 +68,7 @@ export function ProductPagination({ currentPage, totalPages }: ProductPagination
       <button
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="flex size-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300 dark:hover:bg-slate-900"
+        className="flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300 dark:hover:bg-slate-900"
         aria-label="Trang sau"
       >
         <ChevronRight size={16} />

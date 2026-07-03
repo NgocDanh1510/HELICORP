@@ -3,6 +3,12 @@
     "home": "Trang chủ",
     "products": "Sản phẩm",
     "features": "Tính năng",
+    "contact": "Liên hệ",
+    "login": "Đăng nhập",
+    "logout": "Đăng xuất",
+    "brand": "Thương hiệu",
+    "category": "Phân khúc",
+    "featured": "Nổi bật",
     "signup": "Đăng ký",
     "allProducts": "Xem tất cả sản phẩm",
     "wishlist": "Yêu thích",
@@ -25,84 +31,61 @@
     }
   },
   "hero": {
-    "eyebrow": "HeliPhone Aurora Series",
-    "title": "HeliPhone Aurora",
-    "description": "Dòng smartphone flagship với màn hình OLED rực rỡ, camera AI và thiết kế cao cấp cho công việc, sáng tạo và giải trí mỗi ngày.",
-    "primaryCta": "Khám phá sản phẩm",
-    "secondaryCta": "Xem tính năng",
-    "imageAlt": "HeliPhone Aurora",
-    "chipTitle": "Heli A1 Neural",
-    "chipDescription": "Xử lý AI on-device nhanh và riêng tư.",
-    "stats": {
-      "display": {
-        "value": "120Hz",
-        "label": "OLED LTPO"
-      },
-      "camera": {
-        "value": "50MP",
-        "label": "Camera AI"
-      },
-      "charging": {
-        "value": "65W",
-        "label": "Sạc nhanh"
-      }
-    }
+    "eyebrow": "GIỚI THIỆU LẦN ĐẦU · 2024",
+    "title1": "Vẻ đẹp",
+    "title2": "vượt thời gian",
+    "title3": "trong tầm tay.",
+    "description": "HeliPhone Aurora — kiệt tác công nghệ với camera 200MP, chip Helio X1 và màn hình AMOLED 144Hz. Sang trọng không thỏa hiệp.",
+    "primaryCta": "Mua ngay",
+    "secondaryCta": "Khám phá thêm"
   },
   "features": {
-    "eyebrow": "Tính năng nổi bật",
-    "title": "Mọi chi tiết được tối ưu cho trải nghiệm flagship.",
-    "description": "HeliPhone Aurora tập trung vào những thứ người dùng chạm đến mỗi ngày: màn hình, camera, hiệu năng và pin.",
+    "eyebrow": "TÍNH NĂNG NỔI BẬT",
+    "title1": "Được tạo ra để",
+    "title2": "truyền cảm hứng",
     "items": {
       "camera": {
-        "title": "Camera AI Pro",
-        "description": "Tự động cân bằng ảnh chân dung, đêm và video chuyển động nhanh với tone màu tự nhiên."
+        "title": "Hệ thống 5 Camera",
+        "description": "200MP AI · f/1.4 · Chụp đêm vượt trội"
       },
       "chip": {
-        "title": "Heli A1 Neural",
-        "description": "Chip flagship tối ưu tác vụ AI, game và đa nhiệm nhưng vẫn tiết kiệm năng lượng."
+        "title": "Chip Helio X1",
+        "description": "4nm · 12 nhân · Hiệu suất đỉnh cao"
       },
       "battery": {
-        "title": "Pin cả ngày",
-        "description": "Viên pin lớn kết hợp sạc nhanh 65W giúp quay lại công việc chỉ sau một khoảng nghỉ ngắn."
+        "title": "Pin 6000mAh",
+        "description": "Sạc nhanh 120W · Không dây 50W"
       },
-      "material": {
-        "title": "Vật liệu cao cấp",
-        "description": "Khung titanium hoặc aluminum, mặt kính bền bỉ và khả năng chống vết xước tốt hơn."
+      "screen": {
+        "title": "Màn hình 6.8\"",
+        "description": "LTPO AMOLED · 144Hz · 2K+ · HDR10+"
       }
     }
   },
   "story": {
-    "eyebrow": "Scrollytelling",
-    "title": "Camera, chip và pin cùng chuyển động theo cách bạn dùng máy.",
-    "description": "Phần này dùng GSAP ScrollTrigger để tạo chuyển động nhẹ khi người dùng cuộn, đồng thời giảm hiệu ứng trên mobile.",
-    "phoneLabel": "Aurora Motion Core",
-    "phoneDescription": "Một trải nghiệm chuyển động nhẹ cho landing page mà vẫn giữ tính gọn gàng.",
-    "items": {
-      "camera": {
-        "title": "Camera theo khoảnh khắc",
-        "description": "Hệ thống camera nổi bật dần khi người dùng cuộn đến nội dung hình ảnh."
-      },
-      "chip": {
-        "title": "Chip xử lý on-device",
-        "description": "Chuyển động chip tạo cảm giác tốc độ nhưng không cần canvas nặng."
-      },
-      "battery": {
-        "title": "Pin được tối ưu",
-        "description": "Hiệu ứng trên mobile được rút gọn để ưu tiên độ mượt và PageSpeed."
-      }
+    "section1": {
+      "eyebrow": "Nhiếp ảnh",
+      "title": "Nhìn thấy nghệ thuật trong từng khoảnh khắc",
+      "description": "Hệ thống 5 camera với cảm biến 200MP đầu tiên trên thế giới, khẩu độ f/1.4 và AI nhiếp ảnh thế hệ mới giúp mỗi bức ảnh trở thành một tác phẩm."
+    },
+    "section2": {
+      "eyebrow": "Hiệu năng",
+      "title": "Tốc độ ánh sáng trong lòng bàn tay",
+      "description": "Chip Helio X1 4nm với 12 nhân xử lý, GPU Aurora 9 Gen, RAM LPDDR5X — mọi tác vụ đều mượt mà tuyệt đối dù là gaming hay đa nhiệm chuyên nghiệp."
     }
   },
   "newsletter": {
-    "eyebrow": "Cập nhật sản phẩm",
-    "title": "Nhận tin mới từ HeliPhone Aurora",
-    "description": "Đăng ký để nhận thông tin mở bán, ưu đãi và các bản cập nhật về dòng HeliPhone Aurora.",
-    "emailLabel": "Email",
-    "placeholder": "you@example.com",
+    "title1": "Đừng bỏ lỡ",
+    "title2": "tin tức mới nhất",
+    "description": "Nhận thông báo về sản phẩm mới, ưu đãi độc quyền và cập nhật từ HeliPhone Aurora.",
+    "emailLabel": "Địa chỉ email",
+    "placeholder": "email@cuaban.com",
     "submit": "Đăng ký",
-    "submitting": "Đang gửi...",
-    "invalid": "Email chưa hợp lệ.",
-    "success": "Đăng ký thành công. HeliCorp sẽ gửi tin mới sớm nhất.",
-    "error": "Chưa thể đăng ký lúc này. Vui lòng thử lại."
+    "submitting": "Đang xử lý...",
+    "invalid": "Vui lòng nhập địa chỉ email hợp lệ",
+    "success": "Đăng ký thành công!",
+    "error": "Đăng ký không thành công. Vui lòng thử lại sau.",
+    "privacy": "Chúng tôi tôn trọng quyền riêng tư của bạn. Hủy đăng ký bất cứ lúc nào."
   },
   "chatbot": {
     "open": "Mở chatbot tư vấn",

@@ -7,6 +7,12 @@ const FeatureHighlights = dynamic(() =>
 const ScrollytellingSection = dynamic(() =>
   import("../components/home/ScrollytellingSection").then((module) => module.ScrollytellingSection)
 );
+const ProductSelector = dynamic(() =>
+  import("../components/home/ProductSelector").then((module) => module.ProductSelector)
+);
+const Testimonials = dynamic(() =>
+  import("../components/home/Testimonials").then((module) => module.Testimonials)
+);
 const NewsletterForm = dynamic(() => import("../components/home/NewsletterForm").then((module) => module.NewsletterForm), {
   loading: () => <div className="px-6 py-14" />
 });
@@ -17,6 +23,8 @@ export default function HomePage() {
       <HeroSection />
       <FeatureHighlights />
       <ScrollytellingSection />
+      <ProductSelector />
+      <Testimonials />
       <NewsletterForm />
     </main>
   );

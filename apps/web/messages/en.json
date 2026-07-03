@@ -3,6 +3,12 @@
     "home": "Home",
     "products": "Products",
     "features": "Features",
+    "contact": "Contact",
+    "login": "Log In",
+    "logout": "Log Out",
+    "brand": "Brand",
+    "category": "Category",
+    "featured": "Featured",
     "signup": "Sign up",
     "allProducts": "View all products",
     "wishlist": "Wishlist",
@@ -25,84 +31,61 @@
     }
   },
   "hero": {
-    "eyebrow": "HeliPhone Aurora Series",
-    "title": "HeliPhone Aurora",
-    "description": "A flagship smartphone family with a vivid OLED display, AI camera and premium design for work, creativity and entertainment.",
-    "primaryCta": "Explore products",
-    "secondaryCta": "View features",
-    "imageAlt": "HeliPhone Aurora",
-    "chipTitle": "Heli A1 Neural",
-    "chipDescription": "Fast and private on-device AI processing.",
-    "stats": {
-      "display": {
-        "value": "120Hz",
-        "label": "OLED LTPO"
-      },
-      "camera": {
-        "value": "50MP",
-        "label": "AI Camera"
-      },
-      "charging": {
-        "value": "65W",
-        "label": "Fast charge"
-      }
-    }
+    "eyebrow": "FIRST INTRODUCTION · 2024",
+    "title1": "Timeless",
+    "title2": "beauty",
+    "title3": "in your hands.",
+    "description": "HeliPhone Aurora — a technological masterpiece with a 200MP camera, Helio X1 chip, and 144Hz AMOLED display. Uncompromising luxury.",
+    "primaryCta": "Shop now",
+    "secondaryCta": "Explore more"
   },
   "features": {
-    "eyebrow": "Highlights",
-    "title": "Every detail is tuned for a flagship experience.",
-    "description": "HeliPhone Aurora focuses on what people touch every day: display, camera, performance and battery life.",
+    "eyebrow": "HIGHLIGHT FEATURES",
+    "title1": "Created to",
+    "title2": "inspire",
     "items": {
       "camera": {
-        "title": "AI Pro Camera",
-        "description": "Automatically balances portraits, night scenes and action video with natural color."
+        "title": "5 Camera System",
+        "description": "200MP AI · f/1.4 · Outstanding night photography"
       },
       "chip": {
-        "title": "Heli A1 Neural",
-        "description": "A flagship chip optimized for AI tasks, gaming and multitasking while saving power."
+        "title": "Helio X1 Chip",
+        "description": "4nm · 12 Cores · Peak performance"
       },
       "battery": {
-        "title": "All-day battery",
-        "description": "A large battery and 65W fast charging help you get back to work after a short break."
+        "title": "6000mAh Battery",
+        "description": "120W Fast Charging · 50W Wireless"
       },
-      "material": {
-        "title": "Premium materials",
-        "description": "Titanium or aluminum frame, durable glass and improved scratch resistance."
+      "screen": {
+        "title": "6.8\" Display",
+        "description": "LTPO AMOLED · 144Hz · 2K+ · HDR10+"
       }
     }
   },
   "story": {
-    "eyebrow": "Scrollytelling",
-    "title": "Camera, chip and battery move with the way people use the phone.",
-    "description": "This section uses GSAP ScrollTrigger for subtle scroll motion while reducing the effect on mobile.",
-    "phoneLabel": "Aurora Motion Core",
-    "phoneDescription": "A lightweight motion moment for the landing page without a heavy canvas.",
-    "items": {
-      "camera": {
-        "title": "Camera for every moment",
-        "description": "The camera story reveals as people scroll into the imaging content."
-      },
-      "chip": {
-        "title": "On-device processing",
-        "description": "The chip motion adds a sense of speed without relying on heavy rendering."
-      },
-      "battery": {
-        "title": "Optimized battery story",
-        "description": "Mobile animation is reduced to prioritize smoothness and PageSpeed."
-      }
+    "section1": {
+      "eyebrow": "Photography",
+      "title": "See the art in every moment",
+      "description": "The 5-camera system with the world's first 200MP sensor, f/1.4 aperture, and next-gen AI photography turns every shot into a masterpiece."
+    },
+    "section2": {
+      "eyebrow": "Performance",
+      "title": "Light speed in the palm of your hand",
+      "description": "4nm Helio X1 chip with 12 processing cores, Aurora 9 Gen GPU, LPDDR5X RAM — every task is absolutely smooth, whether gaming or professional multitasking."
     }
   },
   "newsletter": {
-    "eyebrow": "Product updates",
-    "title": "Get HeliPhone Aurora updates",
-    "description": "Sign up for launch news, offers and updates about the HeliPhone Aurora lineup.",
-    "emailLabel": "Email",
-    "placeholder": "you@example.com",
-    "submit": "Sign up",
-    "submitting": "Sending...",
-    "invalid": "Enter a valid email.",
-    "success": "You are subscribed. HeliCorp will send updates soon.",
-    "error": "We could not subscribe you right now. Please try again."
+    "title1": "Don't miss out on",
+    "title2": "the latest news",
+    "description": "Get notified about new products, exclusive offers, and updates from HeliPhone Aurora.",
+    "emailLabel": "Email address",
+    "placeholder": "email@yours.com",
+    "submit": "Subscribe",
+    "submitting": "Processing...",
+    "invalid": "Please enter a valid email address",
+    "success": "Subscribed successfully!",
+    "error": "Subscription failed. Please try again later.",
+    "privacy": "We respect your privacy. Unsubscribe at any time."
   },
   "chatbot": {
     "open": "Open product advisor",

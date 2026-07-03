@@ -1,9 +1,16 @@
 import type { Metadata, Viewport } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { CartMount } from "../components/cart/CartMount";
 import { ChatbotMount } from "../components/chatbot/ChatbotMount";
 import { Header } from "../components/layout/Header";
 import { AppProviders } from "../components/providers/AppProviders";
 import "./globals.css";
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin", "vietnamese"],
+  display: "swap",
+  variable: "--font-plus-jakarta",
+});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 const title = "HeliPhone Aurora | HeliCorp";
@@ -58,12 +65,12 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="vi" suppressHydrationWarning>
+    <html lang="vi" suppressHydrationWarning className={`${plusJakartaSans.variable}`}>
       <head>
         <link rel="preconnect" href="https://placehold.co" />
         <link rel="dns-prefetch" href="https://placehold.co" />
       </head>
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased text-[#111111]">
         <AppProviders>
           <Header />
           {children}

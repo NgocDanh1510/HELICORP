@@ -61,7 +61,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
   }
 
   return (
-    <main className="min-h-screen px-6 py-12">
+    <main className="min-h-screen px-6 pt-32 pb-12 lg:pt-40 lg:pb-24 bg-surface dark:bg-slate-950">
       <section className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_0.95fr]">
         <div className="overflow-hidden rounded-lg bg-white shadow-soft">
           <Image
