@@ -127,7 +127,7 @@ export function Header() {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/80 backdrop-blur-xl shadow-soft dark:bg-slate-950/80" : "bg-transparent"
+        isMenuOpen ? "bg-white dark:bg-slate-950" : isScrolled ? "bg-white/80 backdrop-blur-xl shadow-soft dark:bg-slate-950/80" : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-6 lg:px-12">
@@ -217,13 +217,43 @@ export function Header() {
           )}
         </div>
 
-        <button
-          type="button"
-          onClick={() => setIsMenuOpen((value) => !value)}
-          className="grid size-10 place-items-center text-slate-700 lg:hidden dark:text-slate-200"
-        >
-          {isMenuOpen ? <X size={24} strokeWidth={1.5} /> : <Menu size={24} strokeWidth={1.5} />}
-        </button>
+        <div className="flex items-center gap-3 lg:hidden text-slate-600 dark:text-slate-300">
+          <button
+            type="button"
+            onClick={handleWishlistClick}
+            className="relative grid size-10 place-items-center hover:text-aurora transition-colors"
+            aria-label={t("wishlist")}
+          >
+            <Heart size={20} strokeWidth={1.5} />
+            {wishlistCount > 0 && (
+              <span className="absolute top-1.5 right-1.5 grid min-w-[16px] place-items-center rounded-full bg-aurora px-1 text-[9px] font-bold text-white border border-white dark:border-slate-950">
+                {wishlistCount}
+              </span>
+            )}
+          </button>
+          
+          <button
+            type="button"
+            onClick={openCart}
+            className="relative grid size-10 place-items-center hover:text-aurora transition-colors"
+            aria-label={t("openCart")}
+          >
+            <ShoppingBag size={20} strokeWidth={1.5} />
+            {itemCount > 0 && (
+              <span className="absolute top-1.5 right-1.5 grid min-w-[16px] place-items-center rounded-full bg-aurora px-1 text-[9px] font-bold text-white border border-white dark:border-slate-950">
+                {itemCount}
+              </span>
+            )}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen((value) => !value)}
+            className="grid size-10 place-items-center ml-1"
+          >
+            {isMenuOpen ? <X size={24} strokeWidth={1.5} /> : <Menu size={24} strokeWidth={1.5} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
