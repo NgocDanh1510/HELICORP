@@ -90,7 +90,7 @@ export function CartDrawer() {
                   className="group grid grid-cols-[100px_1fr] gap-4 rounded-2xl border border-slate-200/60 bg-white p-3 shadow-sm transition-all hover:border-slate-300 hover:shadow-md dark:border-slate-800/60 dark:bg-slate-900 dark:hover:border-slate-700 animate-in fade-in slide-in-from-right-4"
                   style={{ animationDelay: `${index * 50}ms`, animationFillMode: 'both' }}
                 >
-                  <Link href={`/san-pham/${item.slug}.html`} onClick={closeCart} className="relative aspect-square w-full overflow-hidden rounded-xl bg-slate-50 dark:bg-slate-950 flex items-center justify-center">
+                  <Link href={`/san-pham/${item.slug || item.productId}.html`} onClick={closeCart} className="relative aspect-square w-full overflow-hidden rounded-xl bg-slate-50 dark:bg-slate-950 flex items-center justify-center">
                     <Image
                       src={item.image || fallbackImage}
                       alt={item.name}
@@ -102,7 +102,7 @@ export function CartDrawer() {
                   </Link>
                   <div className="flex flex-col justify-between py-1">
                     <div className="flex items-start justify-between gap-2">
-                      <Link href={`/san-pham/${item.slug}.html`} onClick={closeCart}>
+                      <Link href={`/san-pham/${item.slug || item.productId}.html`} onClick={closeCart}>
                         <h3 className="line-clamp-2 text-sm font-bold leading-snug text-ink transition-colors hover:text-aurora dark:text-white dark:hover:text-aurora">{item.name}</h3>
                         <p className="mt-1 text-xs font-medium text-slate-500">
                           {item.color} • {item.storage}

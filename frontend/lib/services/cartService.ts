@@ -1,6 +1,7 @@
 export type CartItem = {
   _id: string;
   productId: string;
+  slug: string;
   name: string;
   price: number;
   color: string;
@@ -17,6 +18,7 @@ export type Cart = {
 
 export type AddCartItemInput = {
   productId: string;
+  slug: string;
   name: string;
   price: number;
   color: string;

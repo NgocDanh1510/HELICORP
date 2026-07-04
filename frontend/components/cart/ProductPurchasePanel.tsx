@@ -63,6 +63,7 @@ export function ProductPurchasePanel({ product }: ProductPurchasePanelProps) {
 
     const ok = await addItem({
       productId: product._id,
+      slug: product.slug,
       name: product.name,
       price: product.price,
       image: product.images[0],

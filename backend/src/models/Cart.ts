@@ -3,6 +3,7 @@ import { Schema, model, models, type InferSchemaType } from "mongoose";
 const cartItemSchema = new Schema(
   {
     productId: { type: Schema.Types.ObjectId, ref: "Product", required: true },
+    slug: { type: String, required: true, default: "unknown-product" },
     name: { type: String, required: true },
     price: { type: Number, required: true, min: 0 },
     image: { type: String },
