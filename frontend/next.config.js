@@ -15,7 +15,8 @@ const nextConfig = {
   },
   async rewrites() {
     return [{ source: "/san-pham/:slug.html", destination: "/san-pham/:slug" }];
-  }
+  },
+  output: 'standalone'
 };
 
 module.exports = nextConfig;
