@@ -11,17 +11,6 @@ type ChatbotPanelProps = {
   onClose: () => void;
 };
 
-const suggestedPrompts = [
-  "Điện thoại dưới 10 triệu",
-  "Gợi ý điện thoại chơi game",
-  "Điện thoại chụp ảnh đẹp",
-  "So sánh iPhone và Samsung",
-  "Sản phẩm bán chạy",
-  "Điện thoại có pin tốt",
-  "Chính sách bảo hành",
-  "Hướng dẫn mua hàng"
-];
-
 export function ChatbotPanel({ onClose }: ChatbotPanelProps) {
   const t = useTranslations("chatbot");
   const initialMessages = useMemo<ChatMessage[]>(() => [{ role: "assistant", content: t("greeting") }], [t]);
@@ -29,6 +18,7 @@ export function ChatbotPanel({ onClose }: ChatbotPanelProps) {
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [productsList, setProductsList] = useState<Product[]>([]);
+  const suggestedPrompts = t.raw("suggestedPrompts") as string[];
 
   useEffect(() => {
     async function load() {
@@ -106,11 +96,11 @@ export function ChatbotPanel({ onClose }: ChatbotPanelProps) {
                   key={slug}
                   className="flex gap-2.5 rounded-xl border border-slate-200 bg-white p-2 shadow-sm dark:border-slate-800 dark:bg-slate-900"
                 >
-                  <div className="relative aspect-[4/3] w-16 flex-shrink-0 overflow-hidden rounded bg-slate-55 bg-slate-100 dark:bg-slate-950">
+                  <div className="relative aspect-[4/3] w-16 flex-shrink-0 overflow-hidden rounded bg-slate-55 bg-slate-100 dark:bg-slate-950 flex items-center justify-center">
                     <img
                       src={product.images[0]}
                       alt={product.name}
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-contain p-1"
                     />
                   </div>
                   <div className="flex min-w-0 flex-1 flex-col justify-between">
@@ -126,7 +116,7 @@ export function ChatbotPanel({ onClose }: ChatbotPanelProps) {
                       href={`/san-pham/${product.slug}.html`}
                       className="mt-1 self-start rounded bg-slate-900 px-2.5 py-1 text-[9px] font-bold text-white hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100"
                     >
-                      Xem chi tiết
+                      {t("viewDetails")}
                     </Link>
                   </div>
                 </div>
@@ -167,7 +157,7 @@ export function ChatbotPanel({ onClose }: ChatbotPanelProps) {
         {/* Suggestion Chips */}
         {messages.length === 1 && (
           <div className="mt-4 space-y-2">
-            <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Câu hỏi gợi ý:</p>
+            <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">{t("suggestedTitle")}</p>
             <div className="flex flex-wrap gap-2">
               {suggestedPrompts.map((prompt) => (
                 <button

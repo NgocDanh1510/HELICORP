@@ -4,6 +4,7 @@ import { CartMount } from "../components/cart/CartMount";
 import { ChatbotMount } from "../components/chatbot/ChatbotMount";
 import { Header } from "../components/layout/Header";
 import { AppProviders } from "../components/providers/AppProviders";
+import { WishlistMount } from "../components/wishlist/WishlistMount";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -75,6 +76,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <Header />
           {children}
           <CartMount />
+          <WishlistMount />
           <ChatbotMount />
         </AppProviders>
       </body>

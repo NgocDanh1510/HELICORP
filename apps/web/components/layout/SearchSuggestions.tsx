@@ -127,7 +127,7 @@ export function SearchSuggestions() {
                       width={44}
                       height={33}
                       sizes="44px"
-                      className="aspect-[4/3] rounded bg-slate-100 object-cover"
+                      className="aspect-[4/3] rounded bg-slate-100 dark:bg-slate-900 object-contain p-0.5"
                     />
                     <div className="min-w-0 flex-1">
                       <h4 className="truncate text-xs font-semibold text-ink dark:text-white">{product.name}</h4>

@@ -1,10 +1,12 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 export function ProductSort() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const t = useTranslations("productsPage.sort");
   const currentSort = searchParams.get("sort") || "newest";
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -25,15 +27,15 @@ export function ProductSort() {
 
   return (
     <div className="flex items-center gap-2.5">
-      <span className="text-xs font-bold text-slate-500 uppercase tracking-wider dark:text-slate-400">Sắp xếp:</span>
+      <span className="text-xs font-bold text-slate-500 uppercase tracking-wider dark:text-slate-400">{t("label")}</span>
       <select
         value={currentSort}
         onChange={handleSortChange}
         className="h-10 rounded-full border border-slate-200 bg-white px-4 text-xs text-slate-700 outline-none transition-all focus:border-aurora dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200"
       >
-        <option value="newest">Mới nhất</option>
-        <option value="price_asc">Giá tăng dần</option>
-        <option value="price_desc">Giá giảm dần</option>
+        <option value="newest">{t("newest")}</option>
+        <option value="price_asc">{t("priceAsc")}</option>
+        <option value="price_desc">{t("priceDesc")}</option>
       </select>
     </div>
   );

@@ -28,6 +28,7 @@ export function Header() {
 
   const wishlistCount = useWishlistStore((state) => state.favorites.length);
   const initializeWishlist = useWishlistStore((state) => state.initializeWishlist);
+  const openWishlist = useWishlistStore((state) => state.openWishlist);
 
   useEffect(() => {
     void initializeCart();
@@ -48,6 +49,8 @@ export function Header() {
   const handleWishlistClick = () => {
     if (!user) {
       openAuthModal();
+    } else {
+      openWishlist();
     }
   };
 

@@ -14,7 +14,7 @@ export function ScrollytellingSection() {
           {/* Left: Image */}
           <div className="relative aspect-square w-full rounded-[40px] overflow-hidden shadow-2xl bg-[#111]">
             <Image
-              src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1200&auto=format&fit=crop"
+              src="/images/camera.jpg"
               alt="Camera Lenses"
               fill
               className="object-cover opacity-90"
@@ -58,7 +58,7 @@ export function ScrollytellingSection() {
           {/* Right: Image (Order 1 on mobile, Order 2 on Desktop) */}
           <div className="relative aspect-square w-full rounded-[40px] overflow-hidden shadow-2xl bg-[#0a1128] order-1 lg:order-2">
             <Image
-              src="https://images.unsplash.com/photo-1610465299993-e6675c9f9fac?q=80&w=1200&auto=format&fit=crop"
+              src="/images/chip.jpg"
               alt="Performance Chip"
               fill
               className="object-cover opacity-90"

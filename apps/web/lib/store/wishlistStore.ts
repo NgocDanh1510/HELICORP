@@ -13,12 +13,20 @@ type WishlistState = {
   toggleFavorite: (productId: string) => Promise<boolean>;
   isFavorite: (productId: string) => boolean;
   clearWishlist: () => void;
+  isOpen: boolean;
+  openWishlist: () => void;
+  closeWishlist: () => void;
+  toggleWishlist: () => void;
 };
 
 export const useWishlistStore = create<WishlistState>((set, get) => ({
   favorites: [],
   isLoading: false,
   error: null,
+  isOpen: false,
+  openWishlist: () => set({ isOpen: true }),
+  closeWishlist: () => set({ isOpen: false }),
+  toggleWishlist: () => set((state) => ({ isOpen: !state.isOpen })),
   initializeWishlist: async () => {
     const user = useAuthStore.getState().user;
     if (!user) {

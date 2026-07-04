@@ -35,7 +35,7 @@
     "title1": "Vẻ đẹp",
     "title2": "vượt thời gian",
     "title3": "trong tầm tay.",
-    "description": "SmartPhone — kiệt tác công nghệ với camera 200MP, chip Helio X1 và màn hình AMOLED 144Hz. Sang trọng không thỏa hiệp.",
+    "description": "SmartPhone — kiệt tác công nghệ với camera 48MP, chip A16 Bionic và màn hình Super Retina XDR 120Hz. Sang trọng không thỏa hiệp.",
     "primaryCta": "Mua ngay",
     "secondaryCta": "Khám phá thêm"
   },
@@ -45,20 +45,20 @@
     "title2": "truyền cảm hứng",
     "items": {
       "camera": {
-        "title": "Hệ thống 5 Camera",
-        "description": "200MP AI · f/1.4 · Chụp đêm vượt trội"
+        "title": "Hệ thống Camera Pro",
+        "description": "48MP · f/1.78 · Photonic Engine"
       },
       "chip": {
-        "title": "Chip Helio X1",
-        "description": "4nm · 12 nhân · Hiệu suất đỉnh cao"
+        "title": "Chip A16 Bionic",
+        "description": "4nm · 6 nhân CPU · 5 nhân GPU"
       },
       "battery": {
-        "title": "Pin 6000mAh",
-        "description": "Sạc nhanh 120W · Không dây 50W"
+        "title": "Pin cả ngày dài",
+        "description": "Sạc nhanh 20W · MagSafe 15W"
       },
       "screen": {
-        "title": "Màn hình 6.8\"",
-        "description": "LTPO AMOLED · 144Hz · 2K+ · HDR10+"
+        "title": "Màn hình 6.7\"",
+        "description": "Super Retina XDR · 120Hz · Dynamic Island"
       }
     }
   },
@@ -66,12 +66,12 @@
     "section1": {
       "eyebrow": "Nhiếp ảnh",
       "title": "Nhìn thấy nghệ thuật trong từng khoảnh khắc",
-      "description": "Hệ thống 5 camera với cảm biến 200MP đầu tiên trên thế giới, khẩu độ f/1.4 và AI nhiếp ảnh thế hệ mới giúp mỗi bức ảnh trở thành một tác phẩm."
+      "description": "Hệ thống camera Pro với cảm biến 48MP tiên tiến, khẩu độ f/1.78 và Photonic Engine thế hệ mới giúp mỗi bức ảnh trở thành một tác phẩm."
     },
     "section2": {
       "eyebrow": "Hiệu năng",
       "title": "Tốc độ ánh sáng trong lòng bàn tay",
-      "description": "Chip Helio X1 4nm với 12 nhân xử lý, GPU Aurora 9 Gen, RAM LPDDR5X — mọi tác vụ đều mượt mà tuyệt đối dù là gaming hay đa nhiệm chuyên nghiệp."
+      "description": "Chip A16 Bionic 4nm với 6 nhân CPU, 5 nhân GPU — mọi tác vụ đều mượt mà tuyệt đối dù là gaming hay đa nhiệm chuyên nghiệp."
     }
   },
   "newsletter": {
@@ -97,6 +97,65 @@
     "placeholder": "Nhập câu hỏi của bạn...",
     "send": "Gửi tin nhắn",
     "typing": "Đang trả lời...",
-    "error": "Mình chưa kết nối được hệ thống tư vấn. Vui lòng thử lại sau."
+    "error": "Mình chưa kết nối được hệ thống tư vấn. Vui lòng thử lại sau.",
+    "suggestedTitle": "Câu hỏi gợi ý:",
+    "suggestedPrompts": [
+      "Điện thoại dưới 10 triệu",
+      "Gợi ý điện thoại chơi game",
+      "Điện thoại chụp ảnh đẹp",
+      "So sánh iPhone và Samsung",
+      "Sản phẩm bán chạy",
+      "Điện thoại có pin tốt",
+      "Chính sách bảo hành",
+      "Hướng dẫn mua hàng"
+    ],
+    "viewDetails": "Xem chi tiết"
+  },
+  "productsPage": {
+    "store": "Cửa hàng",
+    "title": "Danh sách điện thoại",
+    "searchResults": "Kết quả tìm kiếm cho \"{search}\"",
+    "description": "Khám phá các dòng điện thoại cao cấp nhất từ HeliCorp, Apple, Samsung và Xiaomi với chính sách giá ưu đãi và trả góp 0%.",
+    "foundCount": "Tìm thấy <bold>{count}</bold> sản phẩm",
+    "noProductsFound": "Không tìm thấy sản phẩm nào khớp với bộ lọc đã chọn.",
+    "viewDetails": "Xem chi tiết",
+    "filters": {
+      "title": "Bộ lọc tìm kiếm",
+      "clear": "Xóa bộ lọc",
+      "brand": "Thương hiệu",
+      "category": "Phân khúc",
+      "loading": "Đang tải..."
+    },
+    "sort": {
+      "label": "Sắp xếp:",
+      "newest": "Mới nhất",
+      "priceAsc": "Giá tăng dần",
+      "priceDesc": "Giá giảm dần"
+    }
+  },
+  "productDetails": {
+    "color": "Màu sắc",
+    "storage": "Dung lượng",
+    "techSpecs": "Thông số kỹ thuật",
+    "addToCart": "Thêm vào giỏ hàng",
+    "addingToCart": "Đang thêm...",
+    "addedToCart": "Đã thêm vào giỏ hàng.",
+    "addCartError": "Chưa thể thêm sản phẩm. Vui lòng thử lại.",
+    "loginToCart": "Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng.",
+    "wishlist": "Yêu thích",
+    "wishlisted": "Đã yêu thích",
+    "addedToWishlist": "Đã thêm vào danh sách yêu thích.",
+    "removedFromWishlist": "Đã xóa khỏi danh sách yêu thích.",
+    "loginToWishlist": "Vui lòng đăng nhập để thêm sản phẩm vào danh sách yêu thích."
+  },
+  "testimonials": {
+    "eyebrow": "Đánh giá thực tế",
+    "title": "Khách hàng nói gì về Aurora?",
+    "r1_role": "Nhà sáng tạo nội dung",
+    "r1_text": "Camera của Aurora Pro thực sự tuyệt vời. Khả năng chụp đêm siêu sắc nét, quay video chống rung cực đỉnh.",
+    "r2_role": "Doanh nhân",
+    "r2_text": "Thiết kế titanium siêu nhẹ và sang trọng. Thời lượng pin cực trâu giúp tôi làm việc cả ngày dài không lo hết pin.",
+    "r3_role": "Game thủ chuyên nghiệp",
+    "r3_text": "Chip Helio X1 xử lý mượt mà mọi tựa game nặng nhất ở cấu hình cao nhất mà không bị nóng máy. Quá hài lòng!"
   }
 }

@@ -35,7 +35,7 @@
     "title1": "Timeless",
     "title2": "beauty",
     "title3": "in your hands.",
-    "description": "SmartPhone— a technological masterpiece with a 200MP camera, Helio X1 chip, and 144Hz AMOLED display. Uncompromising luxury.",
+    "description": "SmartPhone— a technological masterpiece with a 48MP camera, A16 Bionic chip, and 120Hz Super Retina XDR display. Uncompromising luxury.",
     "primaryCta": "Shop now",
     "secondaryCta": "Explore more"
   },
@@ -45,20 +45,20 @@
     "title2": "inspire",
     "items": {
       "camera": {
-        "title": "5 Camera System",
-        "description": "200MP AI · f/1.4 · Outstanding night photography"
+        "title": "Pro Camera System",
+        "description": "48MP · f/1.78 · Photonic Engine"
       },
       "chip": {
-        "title": "Helio X1 Chip",
-        "description": "4nm · 12 Cores · Peak performance"
+        "title": "A16 Bionic Chip",
+        "description": "4nm · 6-core CPU · 5-core GPU"
       },
       "battery": {
-        "title": "6000mAh Battery",
-        "description": "120W Fast Charging · 50W Wireless"
+        "title": "All-day Battery Life",
+        "description": "20W Fast Charging · 15W MagSafe"
       },
       "screen": {
-        "title": "6.8\" Display",
-        "description": "LTPO AMOLED · 144Hz · 2K+ · HDR10+"
+        "title": "6.7\" Display",
+        "description": "Super Retina XDR · 120Hz · Dynamic Island"
       }
     }
   },
@@ -66,12 +66,12 @@
     "section1": {
       "eyebrow": "Photography",
       "title": "See the art in every moment",
-      "description": "The 5-camera system with the world's first 200MP sensor, f/1.4 aperture, and next-gen AI photography turns every shot into a masterpiece."
+      "description": "The Pro camera system with an advanced 48MP sensor, f/1.78 aperture, and next-gen Photonic Engine turns every shot into a masterpiece."
     },
     "section2": {
       "eyebrow": "Performance",
       "title": "Light speed in the palm of your hand",
-      "description": "4nm Helio X1 chip with 12 processing cores, Aurora 9 Gen GPU, LPDDR5X RAM — every task is absolutely smooth, whether gaming or professional multitasking."
+      "description": "4nm A16 Bionic chip with 6 CPU cores, 5 GPU cores — every task is absolutely smooth, whether gaming or professional multitasking."
     }
   },
   "newsletter": {
@@ -97,6 +97,65 @@
     "placeholder": "Type a question...",
     "send": "Send message",
     "typing": "Replying...",
-    "error": "I cannot reach the advisor service yet. Please try again later."
+    "error": "I cannot reach the advisor service yet. Please try again later.",
+    "suggestedTitle": "Suggested questions:",
+    "suggestedPrompts": [
+      "Phones under $400",
+      "Recommend gaming phones",
+      "Phones with good camera",
+      "Compare iPhone and Samsung",
+      "Best selling products",
+      "Phones with good battery",
+      "Warranty policy",
+      "Shopping guide"
+    ],
+    "viewDetails": "View details"
+  },
+  "productsPage": {
+    "store": "Store",
+    "title": "Phones",
+    "searchResults": "Search results for \"{search}\"",
+    "description": "Explore the most premium phones from HeliCorp, Apple, Samsung and Xiaomi with preferential prices and 0% installment.",
+    "foundCount": "Found <bold>{count}</bold> products",
+    "noProductsFound": "No products found matching the selected filters.",
+    "viewDetails": "View details",
+    "filters": {
+      "title": "Search filter",
+      "clear": "Clear filters",
+      "brand": "Brand",
+      "category": "Category",
+      "loading": "Loading..."
+    },
+    "sort": {
+      "label": "Sort by:",
+      "newest": "Newest",
+      "priceAsc": "Price: Low to High",
+      "priceDesc": "Price: High to Low"
+    }
+  },
+  "productDetails": {
+    "color": "Color",
+    "storage": "Storage",
+    "techSpecs": "Technical Specifications",
+    "addToCart": "Add to Cart",
+    "addingToCart": "Adding...",
+    "addedToCart": "Added to cart successfully.",
+    "addCartError": "Could not add product. Please try again.",
+    "loginToCart": "Please log in to add products to your cart.",
+    "wishlist": "Wishlist",
+    "wishlisted": "Wishlisted",
+    "addedToWishlist": "Added to wishlist.",
+    "removedFromWishlist": "Removed from wishlist.",
+    "loginToWishlist": "Please log in to add products to your wishlist."
+  },
+  "testimonials": {
+    "eyebrow": "Real Reviews",
+    "title": "What customers say about Aurora?",
+    "r1_role": "Content Creator",
+    "r1_text": "The camera of Aurora Pro is truly amazing. Super sharp night shots and excellent video stabilization.",
+    "r2_role": "Entrepreneur",
+    "r2_text": "Ultra-light and luxurious titanium design. Incredible battery life helps me work all day without worrying.",
+    "r3_role": "Pro Gamer",
+    "r3_text": "Helio X1 chip smoothly handles the heaviest games at maximum settings without overheating. Very satisfied!"
   }
 }
