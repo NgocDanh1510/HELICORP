@@ -7,6 +7,7 @@ const router = Router();
 
 const addItemSchema = z.object({
   productId: z.string().min(1),
+  slug: z.string().min(1),
   name: z.string().min(1),
   price: z.number().nonnegative(),
   image: z.string().optional(),
